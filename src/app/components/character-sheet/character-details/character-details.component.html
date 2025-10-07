@@ -1,0 +1,134 @@
+@if (data[0].uuid === user) {
+@for (item of data; track $index) {
+@if (item.id == charId) {
+@if (editMode===false) {
+
+<div id="sectionTitle flex">
+    @if (item.length >= 1 && editMode === false) {
+
+    <div class="sectionTitle flex">Info</div>
+    <button class="editBtn flex" (click)="editForm()">Save</button>
+    } @else {
+    <div class="sectionTitle flex">Info</div>
+    <button class="editBtn flex" (click)="editForm()">Edit</button>
+
+    }
+</div>
+
+<div id="characterSheetInfoContainer" class='container'>
+    <div class='container'>
+        <div class="w-full xl:mx-12 sm:mx-auto">
+            <div
+                class="characterName infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                <div class='flex sm:w-auto w-24'>Name:</div>
+                <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterName}}</span></div>
+            </div>
+            <div
+                class="characterChronicle infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                <div class='flex sm:w-auto w-24'>Alias: </div>
+                <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterAlias}}</span></div>
+            </div>
+            <div
+                class="characterSire infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                <div class='flex sm:w-auto w-24'>Background: </div>
+                <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterBackground}}</span></div>
+            </div>
+        </div>
+        <div class="w-full xl:mx-12 sm:mx-auto">
+            <div
+                class="characterConcept infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                <div class='flex sm:w-auto w-24'>Heritage:</div>
+                <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterHeritage}}</span></div>
+            </div>
+            <div
+                class="characterAmbition infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                <div class='flex sm:w-auto w-24'>Vice: </div>
+                <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterVice}}</span></div>
+            </div>
+            <div
+                class="characterDesire infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                <div class='flex sm:w-auto w-24'>Look: </div>
+                <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterLook}}</span></div>
+            </div>
+        </div>
+        <!-- <div class="w-full xl:mx-12 sm:mx-auto">
+                    <div
+                        class="characterPredator infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                        <div class='flex sm:w-auto w-24'>Predator: </div>
+                        <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.charPredator}}</span></div>
+                    </div>
+                    <div
+                        class="characterClan infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                        <div class='flex sm:w-auto w-24'>Clan: </div>
+                        <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.charClan}}</span></div>
+                    </div>
+                    <div
+                        class="characterGeneration infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                        <div class='flex sm:w-auto w-24'>Generation: </div>
+                        <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.charGeneration}}</span></div>
+                    </div>
+                </div> -->
+    </div>
+</div>
+} @else {
+<div id="sectionTitle flex">
+    @if (item.length >= 1 && editMode === true) {
+
+    <div class="sectionTitle flex">Info</div>
+    <button class="editBtn flex" (click)="editForm()">Edit</button>
+    } @else {
+    <div class="sectionTitle flex">Info</div>
+    <button class="editBtn flex" (click)="editForm()">Save</button>
+
+    }
+</div>
+<form [formGroup]="characterForm">
+    <label for="character-name">Name: </label>
+    <input id="character-name" type="text" formControlName="characterName" value="{{item.characterName}}" />
+    <label for="character-alias">Alias: </label>
+    <input id="character-alias" type="text" formControlName="characterAlias" />
+
+    <label for="character-Background">Background: </label>
+    <select class="form-control flex " id="background" required name="background">
+        @for (background of backgrounds; track $index) {
+        <option [value]="background">{{ background }}</option>
+        }
+    </select>
+    <textarea class="flex" name="backgroundNotes" id="backgroundNotes"></textarea>
+    <label for="character-Background">Heritage: </label>
+    <select class="form-control flex " id="heritage" required name="heritage">
+        @for (heritage of heritages; track $index) {
+        <option [value]="heritage">{{ heritage }}</option>
+        }
+    </select>
+    <textarea class="flex" name="heritageNotes" id="heritageNotes"></textarea>
+    <label for="character-Background">Vice: </label>
+    <select class="form-control flex " id="vice" required name="vice">
+        @for (vice of vices; track $index) {
+        <option [value]="vice">{{ vice }}</option>
+        }
+    </select>
+    <textarea class="flex" name="viceNotes" id="viceNotes"></textarea>
+
+    <!-- <div>
+
+        @for (item of stress; track item.id) {
+        <input type="checkbox" [formControlName]="item.id">
+
+        }
+
+    </div> -->
+
+    <!-- @for (checkbox of checkboxes; track $index) {
+    <input type="checkbox" [id]="'checkbox-' + checkbox.id" [checked]="checkbox.isChecked"
+        (change)="onCheckboxChange($index, $event.target.checked)">
+    <label [for]="'checkbox-' + checkbox.id">
+        {{ checkbox.label }}
+       
+    </label>
+    } -->
+</form>
+}
+}
+}
+}

@@ -1,0 +1,142 @@
+<form [formGroup]="characterTalents" id="characterSheetTalentsFormContainer"
+    (ngSubmit)="onTalentsUpdate(characterTalents.value)">
+
+    <div class="formFields">
+        <div class="characterAttributesColumn">
+            <div class="strengthAttribute attributeItem flex">
+                <label class="w-30" for="hunt">hunt </label>
+                <div class="form-group levels" formGroupName="hunt">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+            <div class="dexterityAttribute attributeItem flex">
+                <label class="w-30" for="study">study </label>
+                <div class="form-group levels" formGroupName="study">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+            <div class="staminaAttribute attributeItem flex">
+                <label class="w-30" for="survey">survey </label>
+                <div class="form-group levels" formGroupName="survey">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="characterAttributesColumn">
+            <div class="characterConcept attributeItem flex">
+                <label class="w-30" for="tinker">tinker </label>
+                <div class="form-group levels" formGroupName="tinker">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+            <div class="characterAmbition attributeItem flex">
+                <label class="w-30" for="finesse">finesse </label>
+                <div class="form-group levels" formGroupName="finesse">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+            <div class="characterDesire attributeItem flex">
+                <label class="w-30" for="prowl">prowl </label>
+                <div class="form-group levels" formGroupName="prowl">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="characterAttributesColumn">
+            <div class="characterPredator attributeItem flex">
+                <label class="w-30" for="skirmish">skirmish </label>
+                <div class="form-group levels" formGroupName="skirmish">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+            <div class="characterClan attributeItem flex">
+                <label class="w-30" for="wreck">wreck </label>
+                <div class="form-group levels" formGroupName="wreck">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+            <div class="characterGeneration attributeItem flex">
+                <label class="w-30" for="attune">attune </label>
+                <div class="form-group levels" formGroupName="attune">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+            <div class="characterGeneration attributeItem flex">
+                <label class="w-30" for="command">command </label>
+                <div class="form-group levels" formGroupName="command">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+            <div class="characterGeneration attributeItem flex">
+                <label class="w-30" for="consort">consort </label>
+                <div class="form-group levels" formGroupName="consort">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+            <div class="characterGeneration attributeItem flex">
+                <label class="w-30" for="sway">sway </label>
+                <div class="form-group levels" formGroupName="sway">
+                    <input id="level1" class="checkbox-round" type="checkbox" formControlName="level1">
+                    <input id="level2" class="checkbox-round" type="checkbox" formControlName="level2">
+                    <input id="level3" class="checkbox-round" type="checkbox" formControlName="level3">
+                    <input id="level4" class="checkbox-round" type="checkbox" formControlName="level4">
+                    <!-- <input id="level5" class="checkbox-round" type="checkbox" formControlName="level5"> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="buttonContainer">
+        <!-- <button class="btn btn-primary" type="submit">
+      Update
+    </button> -->
+        <app-button [size]="'small'" type="submit">Update</app-button>
+        <app-button [fill]="'outline'" [size]="'small'" type="cancel">Cancel</app-button>
+    </div>
+
+</form>

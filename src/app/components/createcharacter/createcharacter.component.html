@@ -1,0 +1,46 @@
+<form [formGroup]="characterForm">
+    <label for="character-name">Name: </label>
+    <input id="character-name" type="text" formControlName="characterName" />
+    <label for="character-alias">Alias: </label>
+    <input id="character-alias" type="text" formControlName="characterAlias" />
+
+    <label for="character-Background">Background: </label>
+    <select class="form-control flex " id="background" required name="background">
+        @for (background of backgrounds; track $index) {
+        <option [value]="background">{{ background }}</option>
+        }
+    </select>
+    <textarea class="flex" name="backgroundNotes" id="backgroundNotes"></textarea>
+    <label for="character-Background">Heritage: </label>
+    <select class="form-control flex " id="heritage" required name="heritage">
+        @for (heritage of heritages; track $index) {
+        <option [value]="heritage">{{ heritage }}</option>
+        }
+    </select>
+    <textarea class="flex" name="heritageNotes" id="heritageNotes"></textarea>
+    <label for="character-Background">Vice: </label>
+    <select class="form-control flex " id="vice" required name="vice">
+        @for (vice of vices; track $index) {
+        <option [value]="vice">{{ vice }}</option>
+        }
+    </select>
+    <textarea class="flex" name="viceNotes" id="viceNotes"></textarea>
+
+    <!-- <div>
+
+        @for (item of stress; track item.id) {
+        <input type="checkbox" [formControlName]="item.id">
+
+        }
+
+    </div> -->
+
+    @for (checkbox of checkboxes; track $index) {
+    <input type="checkbox" [id]="'checkbox-' + checkbox.id" [checked]="checkbox.isChecked"
+        (change)="onCheckboxChange($index, $event.target.checked)">
+    <label [for]="'checkbox-' + checkbox.id">
+        {{ checkbox.label }}
+        <!-- {{$index}} -->
+    </label>
+    }
+</form>

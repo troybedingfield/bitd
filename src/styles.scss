@@ -1,0 +1,386 @@
+/* You can add global styles to this file, and also import other style files */
+// @use "./assets/fonts/icon-font/icons.css";
+@use "tailwindcss";
+
+
+:root {
+    --color-success: green;
+    --color-warning: rgb(255, 196, 0);
+    --color-error: rgb(255, 0, 0);
+    --color-text-disabled: lightgray;
+    --color-background-disabled: rgba(128, 128, 128, 0.2);
+    --color-button-default: rgba(0, 0, 0, 0.95);
+    --color-button-border-default: rgb(51, 0, 0);
+    --color-text-button: white;
+    --color-button-outline: white;
+    --color-transparent: transparent;
+    --color-clear-button-hover: rgba(211, 211, 211, 0.2);
+    --color-clear-button-success-hover: rgba(144, 238, 144, 0.2);
+    --color-clear-button-warning-hover: rgba(255, 196, 0, 0.2);
+    --color-clear-button-error-hover: rgb(255, 71, 71, 0.2);
+    --roboto: "Roboto", sans-serif;
+    --roboto-thin: 100;
+    --roboto-light: 300;
+    --roboto-regular: 400;
+    --roboto-medium: 500;
+    --roboto-bold: 700;
+    --roboto-black: 900;
+    --roboto-italic: italic;
+    --roboto-normal: normal;
+
+    // dark mode colors
+    --dark-color-button-default: rgb(69, 10, 10, 0.8);
+}
+
+html * {
+    box-sizing: border-box;
+}
+
+
+
+body * {
+    font-family: var(--roboto);
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+}
+
+
+h1 {
+    font-size: 42px;
+    margin: 12px 0;
+}
+
+h2 {
+    font-size: 36px;
+    margin: 12px 0;
+}
+
+h3 {
+    font-size: 30px;
+    margin: 12px 0;
+}
+
+h4 {
+    font-size: 24px;
+    margin: 12px 0;
+}
+
+h5 {
+    font-size: 18px;
+    margin: 12px 0;
+}
+
+.font42 {
+    font-size: 42px;
+}
+
+.font36 {
+    font-size: 36px;
+}
+
+.font30 {
+    font-size: 30px;
+}
+
+.font24 {
+    font-size: 24px;
+}
+
+.font18 {
+    font-size: 18px;
+}
+
+.font-thin {
+    font-weight: var(--roboto-thin);
+}
+
+.font-light {
+    font-weight: var(--roboto-light);
+}
+
+.font-regular {
+    font-weight: var(--roboto-regular);
+}
+
+.font-medium {
+    font-weight: var(--roboto-medium);
+}
+
+.font-bold {
+    font-weight: var(--roboto-bold);
+}
+
+.font-black {
+    font-weight: var(--roboto-black);
+}
+
+.font-italic {
+    font-style: var(--roboto-italic);
+}
+
+
+.text-uppercase {
+    text-transform: uppercase;
+    // margin: 12px 0;
+}
+
+.text-center {
+    text-align: center;
+    margin: 12px 0;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 48px;
+}
+
+.checkbox-round {
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid black;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox-round:checked {
+    background-color: black;
+}
+
+textarea {
+    resize: vertical;
+}
+
+
+.circle {
+    height: 16px;
+    width: 16px;
+    display: flex;
+    border-radius: 50px;
+    border: 1px solid black;
+
+    &.filled {
+        background-color: black;
+    }
+}
+
+
+input:not([type=checkbox]) {
+    display: flex;
+    min-height: 36px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid black;
+    padding: 0 12px;
+}
+
+a>i.icon {
+    cursor: pointer;
+}
+
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+    .grid {
+        grid-template-columns: repeat(2, 50%);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .vercelLogo {
+        filter: invert(1);
+    }
+
+    .logo {
+        filter: invert(1) drop-shadow(0 0 0.3rem #ffffff70);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+#sectionTitle {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-bottom: 1px solid gray;
+
+    .sectionTitle {
+        display: flex;
+
+    }
+}
+
+.levels {
+    display: flex;
+    gap: 4px;
+    height: 24px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.levels .circle {
+    height: 16px;
+    width: 16px;
+    display: flex;
+    border-radius: 50px;
+    border: 1px solid black;
+
+    &.filled {
+        background-color: black;
+    }
+}
+
+
+/************************************************************
+  ************************************************************
+  Dark Mode Theme
+  ************************************************************
+  ************************************************************/
+@media (prefers-color-scheme: dark) {
+
+    body * {
+        color: white;
+    }
+
+    form label {
+        color: white;
+    }
+
+    // body {
+    //     background-color: rgb(23 23 23);
+    // }
+
+    input[type=text] {
+        background-color: rgba(255, 255, 255, 0.7);
+        color: rgb(185 28 28);
+        border-color: rgb(100 116 139);
+    }
+
+
+
+    input[type=number] {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-color: rgb(100 116 139);
+        color: rgb(185 28 28)
+    }
+
+    .checkbox-round {
+        width: 16px;
+        height: 16px;
+        background-color: rgb(23, 23, 23);
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 1px solid red;
+        appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+    .checkbox-round:checked {
+        background-color: rgb(185 28 28);
+    }
+
+
+    input:not([type=checkbox]) {
+        display: flex;
+        min-height: 36px;
+        width: 100%;
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 0.7);
+        color: rgb(185 28 28);
+        border-color: rgb(100 116 139);
+        padding: 0 12px;
+    }
+
+    textarea {
+        background-color: rgba(255, 255, 255, 0.7);
+        color: rgb(185 28 28);
+        border-color: rgb(100 116 139);
+    }
+
+
+    .levels .circle {
+        height: 16px;
+        width: 16px;
+        display: flex;
+        border-radius: 50px;
+        border: 1px solid red;
+
+        &.filled {
+            background-color: rgb(185 28 28);
+            border: 1px solid rgb(185 28 28);
+        }
+    }
+
+
+    .circle {
+        height: 16px;
+        width: 16px;
+        display: flex;
+        border-radius: 50px;
+        border: 1px solid red;
+
+        &.filled {
+            background-color: rgb(185 28 28);
+            border: 1px solid rgb(185 28 28);
+        }
+    }
+
+
+}
+
+
+@media only screen and (max-width:475px) {
+    .levels .circle {
+        height: 20px;
+        width: 20px;
+
+    }
+
+    .circle {
+        height: 20px;
+        width: 20px;
+    }
+
+    .checkbox-round {
+        width: 20px;
+        height: 20px;
+
+    }
+
+    body * {
+        font-size: 18px;
+    }
+}
+
+.toast-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 75px;
+    right: 0%;
+    // transform: translateX(-50%);
+    // background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+}

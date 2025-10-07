@@ -1,0 +1,17 @@
+@if (items.length === 0) {
+<a routerLink="/createcharacter"
+    class='container flex items-center content-center justify-center min-h-40 max-w-36 flex-col gap-2 border border-slate-300 rounded-lg cursor-pointer'>Create
+    Character</a>
+
+} @else {
+
+@for (item of items; track item.id) {
+<app-character-card charID="{{item.id}}">{{ item.characterName }}<br />{{ item.charChronicle
+    }}</app-character-card>
+}
+<!-- @empty {
+<div>No items to display.</div>
+} -->
+
+
+}

@@ -1,0 +1,175 @@
+#four-clock {
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+}
+
+.pie-checkbox-container1 {
+    display: flex;
+    cursor: pointer;
+    position: initial;
+    width: 3rem;
+    /* Adjust size as needed */
+    height: 3rem;
+}
+
+/* Hide the default browser checkbox */
+.pie-checkbox-container1 input {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Create the visual pie slice with a pseudo-element */
+.pie-slice1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    /* Color when unchecked */
+    border-radius: 50%;
+    /* Start with a circle */
+    /* This creates the pie slice shape by clipping the circular element */
+    clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
+    transition: background-color 0.3s, clip-path 0.3s;
+}
+
+/* Style the pie slice when the checkbox is checked */
+.pie-checkbox-container1 input:checked+.pie-slice1 {
+    background-color: dodgerblue;
+    /* Color when checked */
+    clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
+    /* A larger slice */
+}
+
+
+.pie-checkbox-container2 {
+    display: flex;
+    cursor: pointer;
+    position: initial;
+    width: 3rem;
+    /* Adjust size as needed */
+    height: 3rem;
+}
+
+/* Hide the default browser checkbox */
+.pie-checkbox-container2 input {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Create the visual pie slice with a pseudo-element */
+.pie-slice2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    /* Color when unchecked */
+    border-radius: 50%;
+    /* Start with a circle */
+    /* This creates the pie slice shape by clipping the circular element */
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%);
+    transition: background-color 0.3s, clip-path 0.3s;
+}
+
+/* Style the pie slice when the checkbox is checked */
+.pie-checkbox-container2 input:checked+.pie-slice2 {
+    background-color: dodgerblue;
+    /* Color when checked */
+    clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%);
+    /* A larger slice */
+}
+
+
+
+
+.pie-checkbox-container3 {
+    display: flex;
+    cursor: pointer;
+    position: initial;
+    width: 3rem;
+    /* Adjust size as needed */
+    height: 3rem;
+}
+
+/* Hide the default browser checkbox */
+.pie-checkbox-container3 input {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Create the visual pie slice with a pseudo-element */
+.pie-slice3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    /* Color when unchecked */
+    border-radius: 50%;
+    /* Start with a circle */
+    /* This creates the pie slice shape by clipping the circular element */
+    clip-path: polygon(100% 100%, 100% 50%, 50% 50%, 50% 100%);
+    transition: background-color 0.3s, clip-path 0.3s;
+}
+
+/* Style the pie slice when the checkbox is checked */
+.pie-checkbox-container3 input:checked+.pie-slice2 {
+    background-color: dodgerblue;
+    /* Color when checked */
+    clip-path: polygon(100% 100%, 100% 50%, 50% 50%, 50% 100%);
+    /* A larger slice */
+}
+
+
+
+.pie-checkbox-container4 {
+    display: flex;
+    cursor: pointer;
+    position: initial;
+    width: 3rem;
+    /* Adjust size as needed */
+    height: 3rem;
+}
+
+/* Hide the default browser checkbox */
+.pie-checkbox-container4 input {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Create the visual pie slice with a pseudo-element */
+.pie-slice4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    /* Color when unchecked */
+    border-radius: 50%;
+    /* Start with a circle */
+    /* This creates the pie slice shape by clipping the circular element */
+    clip-path: polygon(0 100%, 0 50%, 50% 50%, 50% 100%);
+    transition: background-color 0.3s, clip-path 0.3s;
+}
+
+/* Style the pie slice when the checkbox is checked */
+.pie-checkbox-container4 input:checked+.pie-slice2 {
+    background-color: dodgerblue;
+    /* Color when checked */
+    clip-path: polygon(0 100%, 0 50%, 50% 50%, 50% 100%);
+    /* A larger slice */
+}
