@@ -4,15 +4,15 @@
     <div class="formFields">
         <div class="characterAttributesColumn">
             <div class="flex">Insight
-
-                @if (
+                {{insightNumber}}
+                <!-- @if (
                 characterTalents.get(['hunt', 'level1'])?.value === true ||
                 characterTalents.get(['study', 'level1'])?.value === true ||
                 characterTalents.get(['survey', 'level1'])?.value === true ||
                 characterTalents.get(['tinker', 'level1'])?.value === true
                 ) {
                 {{insightNumber}}
-                <!-- @if (
+                @if (
                 characterTalents.get(['hunt', 'level1'])?.value === true &&
                 characterTalents.get(['study', 'level1'])?.value === true ||
                 characterTalents.get(['hunt', 'level1'])?.value === true &&
@@ -21,8 +21,8 @@
                 characterTalents.get(['tinker', 'level1'])?.value === true
                 ) {
 
-                } -->
                 }
+                } -->
             </div>
             <div class="strengthAttribute attributeItem flex">
                 <label class="w-30" for="hunt">hunt </label>

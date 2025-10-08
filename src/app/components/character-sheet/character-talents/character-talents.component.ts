@@ -17,7 +17,7 @@ export class CharacterTalentsComponent implements OnInit {
   editMode: boolean = false;
   id!: number;
   isFetching: boolean = false;
-  insightNumber: number = 1;
+  insightNumber: number = 0;
 
   characterTalents = new UntypedFormGroup({
     hunt: new UntypedFormGroup({
@@ -121,7 +121,7 @@ export class CharacterTalentsComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    this.characterTalents.get('hunt')?.valueChanges
+    this.characterTalents.valueChanges
       .pipe(
         startWith(null),
         pairwise()
@@ -130,7 +130,20 @@ export class CharacterTalentsComponent implements OnInit {
         console.log('Previous value:', prev);
         console.log('Current value:', next);
         // Compare and react to changes
+        if (next && this.characterTalents.get(['hunt', 'level1'])?.value === true) {
+          this.insightNumber + 1
+        }
       });
+
+    this.characterTalents.get(['hunt', 'level1'])?.valueChanges.subscribe(value => {
+      if (value === true) {
+        this.insightNumber = this.insightNumber + 1;
+      } else {
+        this.insightNumber = 0;
+      }
+
+      // Perform other actions based on the new value
+    });
 
   }
 
