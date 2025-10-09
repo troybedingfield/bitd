@@ -67,6 +67,7 @@ export class CharacterDetailsComponent implements AfterViewInit {
 
       })
     }
+    // console.log(this.data)
   }
 
   editForm() {

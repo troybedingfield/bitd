@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ButtonComponent } from "../../../shared/components/button/button.component";
 import { CharacterTalents, hunt, study } from './character-talents.model';
 import { Subscription, startWith, pairwise } from 'rxjs';
@@ -10,11 +10,16 @@ import { FormGroup, FormControl, ReactiveFormsModule, UntypedFormGroup, UntypedF
   templateUrl: './character-talents.component.html',
   styleUrl: './character-talents.component.scss'
 })
-export class CharacterTalentsComponent implements OnInit {
+export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterViewChecked {
+  userId: string | null = null;
+  @Input() charId: any;
+  @Input() data: any[] = [];
+  @Input() user: any;
+  editMode = false;
 
   loadedTalents: CharacterTalents[] = [];
   subscription: Subscription = new Subscription;
-  editMode: boolean = false;
+
   id!: number;
   isFetching: boolean = false;
   insightNumber: number = 0;
@@ -116,35 +121,51 @@ export class CharacterTalentsComponent implements OnInit {
     }
   }
 
-  // ngAfterViewInit(): void {
-  //   console.log(this.characterTalents.get(['hunt', 'level1'])?.value)
-  // }
+
 
   ngOnInit(): void {
-    this.characterTalents.valueChanges
-      .pipe(
-        startWith(null),
-        pairwise()
-      )
-      .subscribe(([prev, next]) => {
-        console.log('Previous value:', prev);
-        console.log('Current value:', next);
-        // Compare and react to changes
-        if (next && this.characterTalents.get(['hunt', 'level1'])?.value === true) {
-          this.insightNumber + 1
-        }
-      });
+    // this.characterTalents.valueChanges
+    //   .pipe(
+    //     startWith(null),
+    //     pairwise()
+    //   )
+    //   .subscribe(([prev, next]) => {
+    //     console.log('Previous value:', prev);
+    //     console.log('Current value:', next);
+    //     // Compare and react to changes
+    //     if (next && this.characterTalents.get(['hunt', 'level1'])?.value === true) {
+    //       this.insightNumber + 1
+    //     }
+    //   });
 
-    this.characterTalents.get(['hunt', 'level1'])?.valueChanges.subscribe(value => {
-      if (value === true) {
-        this.insightNumber = this.insightNumber + 1;
-      } else {
-        this.insightNumber = 0;
-      }
+    // this.characterTalents.get(['hunt', 'level1'])?.valueChanges.subscribe(value => {
+    //   if (value === true) {
+    //     this.insightNumber = this.insightNumber + 1;
+    //   } else {
+    //     this.insightNumber = 0;
+    //   }
 
-      // Perform other actions based on the new value
-    });
+    //   // Perform other actions based on the new value
+    // });
 
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.data)
+
+  }
+
+  ngAfterViewChecked(): void {
+    //Called after every check of the component's view. Applies to components only.
+    //Add 'implements AfterViewChecked' to the class.
+    // console.log(this.data[0].hunt)
+    if (this.data.length >= 1) {
+      this.characterTalents.patchValue({
+        hunt: ({ level1: this.data[0].hunt[0] }),
+
+
+      })
+    }
   }
 
 }

@@ -14,7 +14,7 @@ import { CharacterTalentsComponent } from "./character-talents/character-talents
 })
 export class CharacterSheetComponent implements OnInit, AfterContentChecked, OnDestroy {
   characterInfo: any[] = []
-  characterAttributes: any[] = []
+  talent: any[] = []
   userId: string | null = null;
   user: any;
   userNew: any;
@@ -40,10 +40,33 @@ export class CharacterSheetComponent implements OnInit, AfterContentChecked, OnD
     // } catch (error) {
     //   console.error('Error fetching data:', error);
     // }
+    // try {
+    //   this.characterInfo = await this.supabaseService.getItemsByIdAndUser('character', this.userId, this.userNew);
+    // } catch (error) {
+    //   console.error('Error fetching data:', error);
+    // }
+    // try {
+    //   this.characterInfo = await this.supabaseService.getItemsByCharIdAndUser('character', this.userId, this.userNew);
+    // } catch (error) {
+    //   console.error('Error fetching data:', error);
+    // }
+    // try {
+    //   this.talent = await this.supabaseService.getItemsByCharIdAndUser('talents', this.userId, this.userNew);
+    // } catch (error) {
+    //   console.error('Error fetching data:', error);
+    // }
+
     try {
-      this.characterInfo = await this.supabaseService.getItemsByIdAndUser('character', this.userId, this.userNew);
+      const [characterData, talentData] = await Promise.all([
+        this.supabaseService.getItemsByCharIdAndUser('character', this.userId, this.userNew),
+        this.supabaseService.getItemsByCharIdAndUser('talents', this.userId, this.userNew),
+      ]);
+      this.characterInfo = characterData;
+      this.talent = talentData;
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('Error fetching data with Promise.all:', error);
+    } finally {
+      //  this.loading = false;
     }
     // try {
     //   this.characterAttributes = await this.supabaseService.getItemsById('charAttributes', this.userId);
@@ -71,7 +94,7 @@ export class CharacterSheetComponent implements OnInit, AfterContentChecked, OnD
   ngAfterContentChecked(): void {
     //Called after every check of the component's or directive's content.
     //Add 'implements AfterContentChecked' to the class.
-    console.log(this.userSubscription)
+    // console.log(this.userSubscription)
 
   }
 

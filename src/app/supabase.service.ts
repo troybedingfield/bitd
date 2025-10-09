@@ -80,6 +80,13 @@ export class SupabaseService {
     }
     return data;
   }
+  async getItemsByCharIdAndUser(table: string, char_id: any, user: any) {
+    const { data, error } = await this.supabaseClient.from(table).select('*').eq('char_id', char_id).eq('uuid', user);
+    if (error) {
+      throw error;
+    }
+    return data;
+  }
 
 
   // Add more methods for other Supabase operations (e.g., update, delete, auth)
