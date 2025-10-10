@@ -4,11 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CharacterDetailsComponent } from "./character-details/character-details.component";
 import { CharacterTalentsComponent } from "./character-talents/character-talents.component";
+import { LoadingspinnerComponent } from "../../shared/components/loadingspinner/loadingspinner.component";
 
 
 @Component({
   selector: 'app-character-sheet',
-  imports: [CharacterDetailsComponent, CharacterTalentsComponent],
+  imports: [CharacterDetailsComponent, CharacterTalentsComponent, LoadingspinnerComponent],
   templateUrl: './character-sheet.component.html',
   styleUrl: './character-sheet.component.scss'
 })
@@ -19,6 +20,7 @@ export class CharacterSheetComponent implements OnInit, AfterContentChecked, OnD
   user: any;
   userNew: any;
   userSubscription: Subscription | undefined;
+  loading = true;
 
   constructor(private route: ActivatedRoute, private supabaseService: SupabaseService) { }
 
@@ -66,7 +68,7 @@ export class CharacterSheetComponent implements OnInit, AfterContentChecked, OnD
     } catch (error) {
       console.error('Error fetching data with Promise.all:', error);
     } finally {
-      //  this.loading = false;
+      this.loading = false;
     }
     // try {
     //   this.characterAttributes = await this.supabaseService.getItemsById('charAttributes', this.userId);

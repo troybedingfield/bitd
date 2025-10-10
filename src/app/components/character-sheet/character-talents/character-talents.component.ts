@@ -23,6 +23,8 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
   id!: number;
   isFetching: boolean = false;
   insightNumber: number = 0;
+  prowessNumber: number = 0;
+  resolveNumber: number = 0;
 
   characterTalents = new UntypedFormGroup({
     hunt: new UntypedFormGroup({
@@ -116,9 +118,31 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
   }
 
   checkInsightLevels() {
-    if (this.characterTalents.get(['hunt', 'level1'])?.value === true) {
-      this.insightNumber + 1
+
+    const insightArray = [this.data[0].hunt[0], this.data[0].study[0], this.data[0].survey[0], this.data[0].tinker[0]]
+    for (const item of insightArray) {
+      if (item === true)
+        this.insightNumber = this.insightNumber + 1
     }
+
+  }
+  checkProwessLevels() {
+
+    const prowessArray = [this.data[0].finesse[0], this.data[0].prowl[0], this.data[0].skirmish[0], this.data[0].wreck[0]]
+    for (const item of prowessArray) {
+      if (item === true)
+        this.prowessNumber = this.prowessNumber + 1
+    }
+
+  }
+  checkResolveLevels() {
+
+    const resolveArray = [this.data[0].attune[0], this.data[0].command[0], this.data[0].consort[0], this.data[0].sway[0]]
+    for (const item of resolveArray) {
+      if (item === true)
+        this.resolveNumber = this.resolveNumber + 1
+    }
+
   }
 
 
@@ -147,11 +171,91 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
 
     //   // Perform other actions based on the new value
     // });
+    if (this.data.length >= 1) {
+      this.characterTalents.patchValue({
+        hunt: ({
+          level1: this.data[0].hunt[0],
+          level2: this.data[0].hunt[1],
+          level3: this.data[0].hunt[2],
+          level4: this.data[0].hunt[3],
+        }),
+        study: ({
+          level1: this.data[0].study[0],
+          level2: this.data[0].study[1],
+          level3: this.data[0].study[2],
+          level4: this.data[0].study[3],
+        }),
+        survey: ({
+          level1: this.data[0].survey[0],
+          level2: this.data[0].survey[1],
+          level3: this.data[0].survey[2],
+          level4: this.data[0].survey[3],
+        }),
+        tinker: ({
+          level1: this.data[0].tinker[0],
+          level2: this.data[0].tinker[1],
+          level3: this.data[0].tinker[2],
+          level4: this.data[0].tinker[3],
+        }),
+        finesse: ({
+          level1: this.data[0].finesse[0],
+          level2: this.data[0].finesse[1],
+          level3: this.data[0].finesse[2],
+          level4: this.data[0].finesse[3],
+        }),
+        prowl: ({
+          level1: this.data[0].prowl[0],
+          level2: this.data[0].prowl[1],
+          level3: this.data[0].prowl[2],
+          level4: this.data[0].prowl[3],
+        }),
+        skirmish: ({
+          level1: this.data[0].skirmish[0],
+          level2: this.data[0].skirmish[1],
+          level3: this.data[0].skirmish[2],
+          level4: this.data[0].skirmish[3],
+        }),
+        wreck: ({
+          level1: this.data[0].wreck[0],
+          level2: this.data[0].wreck[1],
+          level3: this.data[0].wreck[2],
+          level4: this.data[0].wreck[3],
+        }),
+        attune: ({
+          level1: this.data[0].attune[0],
+          level2: this.data[0].attune[1],
+          level3: this.data[0].attune[2],
+          level4: this.data[0].attune[3],
+        }),
+        command: ({
+          level1: this.data[0].command[0],
+          level2: this.data[0].command[1],
+          level3: this.data[0].command[2],
+          level4: this.data[0].command[3],
+        }),
+        consort: ({
+          level1: this.data[0].consort[0],
+          level2: this.data[0].consort[1],
+          level3: this.data[0].consort[2],
+          level4: this.data[0].consort[3],
+        }),
+        sway: ({
+          level1: this.data[0].sway[0],
+          level2: this.data[0].sway[1],
+          level3: this.data[0].sway[2],
+          level4: this.data[0].sway[3],
+        }),
 
+
+      })
+    }
+
+    this.checkInsightLevels()
+    this.checkProwessLevels()
+    this.checkResolveLevels()
   }
 
   ngAfterViewInit(): void {
-    console.log(this.data)
 
   }
 
@@ -159,13 +263,7 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
     //Called after every check of the component's view. Applies to components only.
     //Add 'implements AfterViewChecked' to the class.
     // console.log(this.data[0].hunt)
-    if (this.data.length >= 1) {
-      this.characterTalents.patchValue({
-        hunt: ({ level1: this.data[0].hunt[0] }),
 
-
-      })
-    }
   }
 
 }

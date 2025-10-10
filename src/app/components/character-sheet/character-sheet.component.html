@@ -1,2 +1,6 @@
+@if (loading === true) {
+<app-loadingspinner></app-loadingspinner>
+} @else {
 <app-character-details [user]="userNew" [data]="characterInfo" charId="{{userId}}"></app-character-details>
 <app-character-talents [user]="userNew" [data]="talent" charId="{{userId}}"></app-character-talents>
+}
