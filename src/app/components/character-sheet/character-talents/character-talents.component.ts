@@ -3,10 +3,11 @@ import { ButtonComponent } from "../../../shared/components/button/button.compon
 import { CharacterTalents, hunt, study } from './character-talents.model';
 import { Subscription, startWith, pairwise } from 'rxjs';
 import { FormGroup, FormControl, ReactiveFormsModule, UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-character-talents',
-  imports: [ButtonComponent, ReactiveFormsModule],
+  imports: [ButtonComponent, ReactiveFormsModule, CommonModule],
   templateUrl: './character-talents.component.html',
   styleUrl: './character-talents.component.scss'
 })
@@ -15,7 +16,7 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
   @Input() charId: any;
   @Input() data: any[] = [];
   @Input() user: any;
-  editMode = false;
+  editMode: boolean = false;
 
   loadedTalents: CharacterTalents[] = [];
   subscription: Subscription = new Subscription;
@@ -25,6 +26,20 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
   insightNumber: number = 0;
   prowessNumber: number = 0;
   resolveNumber: number = 0;
+
+
+  huntBoolean: boolean[] = []
+  studyBoolean: boolean[] = []
+  surveyBoolean: boolean[] = []
+  tinkerBoolean: boolean[] = []
+  finesseBoolean: boolean[] = []
+  prowlBoolean: boolean[] = []
+  skirmishBoolean: boolean[] = []
+  wreckBoolean: boolean[] = []
+  attuneBoolean: boolean[] = []
+  commandBoolean: boolean[] = []
+  consortBoolean: boolean[] = []
+  swayBoolean: boolean[] = []
 
   characterTalents = new UntypedFormGroup({
     hunt: new UntypedFormGroup({
@@ -146,6 +161,11 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
   }
 
 
+  editForm() {
+    this.editMode = !this.editMode;
+
+  }
+
 
   ngOnInit(): void {
     // this.characterTalents.valueChanges
@@ -171,6 +191,25 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
 
     //   // Perform other actions based on the new value
     // });
+
+    if (this.data[0]) {
+
+      this.huntBoolean = this.data[0]!.hunt.filter((value: boolean) => value === true)
+      this.studyBoolean = this.data[0]!.study.filter((value: boolean) => value === true)
+      this.surveyBoolean = this.data[0]!.survey.filter((value: boolean) => value === true)
+      this.tinkerBoolean = this.data[0]!.tinker.filter((value: boolean) => value === true)
+      this.finesseBoolean = this.data[0]!.finesse.filter((value: boolean) => value === true)
+      this.prowlBoolean = this.data[0]!.prowl.filter((value: boolean) => value === true)
+      this.skirmishBoolean = this.data[0]!.skirmish.filter((value: boolean) => value === true)
+      this.wreckBoolean = this.data[0]!.wreck.filter((value: boolean) => value === true)
+      this.attuneBoolean = this.data[0]!.attune.filter((value: boolean) => value === true)
+      this.commandBoolean = this.data[0]!.command.filter((value: boolean) => value === true)
+      this.consortBoolean = this.data[0]!.consort.filter((value: boolean) => value === true)
+      this.swayBoolean = this.data[0]!.sway.filter((value: boolean) => value === true)
+
+    }
+
+
     if (this.data.length >= 1) {
       this.characterTalents.patchValue({
         hunt: ({

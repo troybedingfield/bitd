@@ -1,14 +1,284 @@
+@if (data[0].uuid === user) {
+@for (item of data; track $index) {
+@if (item.char_id == charId) {
+
+@if (editMode===false) {
+<div id="sectionTitle flex">
+    @if (item.length >= 1 && editMode === false) {
+
+    <div class="sectionTitle flex">Talents</div>
+    <button class="editBtn flex" (click)="editForm()">Save</button>
+    } @else {
+    <div class="sectionTitle flex">Talents</div>
+    <button class="editBtn flex" (click)="editForm()">Edit</button>
+
+    }
+</div>
+
+<div id="characterSheetAttributesContainer" class=''>
+    <div class='container  '>
+        <div class="">
+            @if(insightNumber === 0) {
+            Insight
+            } @else {
+
+            Insight {{insightNumber}}
+            }
+            <div class="levelItem flex">
+                <div class='flex w-30'>hunt </div>
+
+                <div class="levels">
+                    @if (huntBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{huntBoolean.length}}</div> -->
+                    @for (item of item.hunt; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+            <div class="levelItem flex">
+                <div class='flex w-30'>study </div>
+
+                <div class="levels">
+                    @if (studyBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{huntBoolean.length}}</div> -->
+                    @for (item of item.study; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+            <div class="levelItem flex">
+                <div class='flex w-30'>survey </div>
+
+                <div class="levels">
+                    @if (surveyBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{huntBoolean.length}}</div> -->
+                    @for (item of item.survey; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+            <div class="levelItem flex">
+                <div class='flex w-30'>tinker </div>
+
+                <div class="levels">
+                    @if (tinkerBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{huntBoolean.length}}</div> -->
+                    @for (item of item.tinker; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+
+
+        </div>
+        <div class="">
+            @if(prowessNumber === 0) {
+            Prowess
+            } @else {
+
+            Prowess {{prowessNumber}}
+            }
+            <div class="levelItem flex">
+                <div class='flex w-30'>finesse </div>
+
+                <div class="levels">
+                    @if (finesseBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{finesseBoolean.length}}</div> -->
+                    @for (item of item.finesse; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+            <div class="levelItem flex">
+                <div class='flex w-30'>prowl </div>
+
+                <div class="levels">
+                    @if (prowlBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{huntBoolean.length}}</div> -->
+                    @for (item of item.prowl; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+            <div class="levelItem flex">
+                <div class='flex w-30'>skirmish </div>
+
+                <div class="levels">
+                    @if (skirmishBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{huntBoolean.length}}</div> -->
+                    @for (item of item.skirmish; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+            <div class="levelItem flex">
+                <div class='flex w-30'>wreck </div>
+
+                <div class="levels">
+                    @if (wreckBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{huntBoolean.length}}</div> -->
+                    @for (item of item.wreck; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+
+
+        </div>
+        <div class="">
+            @if(resolveNumber === 0) {
+            Resolve
+            } @else {
+
+            Resolve {{resolveNumber}}
+            }
+            <div class="levelItem flex">
+                <div class='flex w-30'>attune </div>
+
+                <div class="levels">
+                    @if (attuneBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{attuneBoolean.length}}</div> -->
+                    @for (item of item.attune; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+            <div class="levelItem flex">
+                <div class='flex w-30'>command </div>
+
+                <div class="levels">
+                    @if (commandBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{huntBoolean.length}}</div> -->
+                    @for (item of item.command; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+            <div class="levelItem flex">
+                <div class='flex w-30'>consort </div>
+
+                <div class="levels">
+                    @if (consortBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{huntBoolean.length}}</div> -->
+                    @for (item of item.consort; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+            <div class="levelItem flex">
+                <div class='flex w-30'>sway </div>
+
+                <div class="levels">
+                    @if (swayBoolean.length >= 0) {
+
+                    <!-- <div class='atrrCount pr-2'>{{huntBoolean.length}}</div> -->
+                    @for (item of item.sway; track $index) {
+
+                    <div class="circle level{{$index+1}} {{item === true ? 'filled' : ''}}"></div>
+                    @if ($index === 0) {
+                    <div>|</div>
+                    }
+                    }
+                    }
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+} @else {
+
+<div id="sectionTitle flex">
+    @if (item.length >= 1 && editMode === true) {
+
+    <div class="sectionTitle flex">Talents</div>
+    <button class="editBtn flex" (click)="editForm()">Edit</button>
+    } @else {
+    <div class="sectionTitle flex">Talents</div>
+    <button class="editBtn flex" (click)="editForm()">Save</button>
+
+    }
+</div>
 <form [formGroup]="characterTalents" id="characterSheetTalentsFormContainer"
     (ngSubmit)="onTalentsUpdate(characterTalents.value)">
 
     <div class="formFields">
         <div class="characterAttributesColumn">
-            <div class="flex">Insight
+            <div class="flex">
                 @if(insightNumber === 0) {
-
+                Insight
                 } @else {
 
-                {{insightNumber}}
+                Insight {{insightNumber}}
                 }
                 <!-- @if (
                 characterTalents.get(['hunt', 'level1'])?.value === true ||
@@ -72,12 +342,12 @@
         </div>
 
         <div class="characterAttributesColumn">
-            <div class="flex">Prowess
+            <div class="flex">
                 @if(prowessNumber === 0) {
-
+                Prowess
                 } @else {
 
-                {{prowessNumber}}
+                Prowess {{prowessNumber}}
                 }
             </div>
             <div class="characterAmbition attributeItem flex">
@@ -123,12 +393,12 @@
         </div>
 
         <div class="characterAttributesColumn">
-            <div class="flex">Resolve
+            <div class="flex">
                 @if(resolveNumber === 0) {
-
+                Resolve
                 } @else {
 
-                {{resolveNumber}}
+                Resolve {{resolveNumber}}
                 }
             </div>
             <div class="characterGeneration attributeItem flex">
@@ -182,3 +452,12 @@
     </div>
 
 </form>
+}
+
+
+
+
+}
+
+}
+}

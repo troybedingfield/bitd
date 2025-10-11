@@ -18,7 +18,7 @@ export class CharacterDetailsComponent implements AfterViewInit {
   @Input() charId: any;
   @Input() data: any[] = [];
   @Input() user: any;
-  editMode = false;
+  editMode: boolean = false;
 
   backgrounds = ['Labor', 'Law', 'Trade', 'Military', 'Noble', 'Underworld'];
   heritages = ['The Dagger Isles', 'Iruvia', "Severos", 'Skolvan', 'Tycheros'];
