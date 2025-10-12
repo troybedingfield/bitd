@@ -4,6 +4,7 @@ import { CharacterTalents, hunt, study } from './character-talents.model';
 import { Subscription, startWith, pairwise } from 'rxjs';
 import { FormGroup, FormControl, ReactiveFormsModule, UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SupabaseService } from '../../../supabase.service';
 
 @Component({
   selector: 'app-character-talents',
@@ -40,6 +41,8 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
   commandBoolean: boolean[] = []
   consortBoolean: boolean[] = []
   swayBoolean: boolean[] = []
+
+  constructor(private supabaseService: SupabaseService) { }
 
   characterTalents = new UntypedFormGroup({
     hunt: new UntypedFormGroup({
@@ -128,8 +131,130 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
     }),
   });
 
-  onTalentsUpdate(postData: CharacterTalents) {
+  async onTalentsUpdate(postData: any, char_id: number, user: any) {
+    const hunt = [
+      postData.hunt.level1.valueOf(),
+      postData.hunt.level2.valueOf(),
+      postData.hunt.level3.valueOf(),
+      postData.hunt.level4.valueOf(),
 
+    ]
+    const study = [
+      postData.study.level1.valueOf(),
+      postData.study.level2.valueOf(),
+      postData.study.level3.valueOf(),
+      postData.study.level4.valueOf(),
+    ]
+    const survey = [
+      postData.survey.level1.valueOf(),
+      postData.survey.level2.valueOf(),
+      postData.survey.level3.valueOf(),
+      postData.survey.level4.valueOf(),
+    ]
+    const tinker = [
+      postData.tinker.level1.valueOf(),
+      postData.tinker.level2.valueOf(),
+      postData.tinker.level3.valueOf(),
+      postData.tinker.level4.valueOf(),
+    ]
+    const finesse = [
+      postData.finesse.level1.valueOf(),
+      postData.finesse.level2.valueOf(),
+      postData.finesse.level3.valueOf(),
+      postData.finesse.level4.valueOf(),
+    ]
+    const prowl = [
+      postData.prowl.level1.valueOf(),
+      postData.prowl.level2.valueOf(),
+      postData.prowl.level3.valueOf(),
+      postData.prowl.level4.valueOf(),
+    ]
+    const skirmish = [
+      postData.skirmish.level1.valueOf(),
+      postData.skirmish.level2.valueOf(),
+      postData.skirmish.level3.valueOf(),
+      postData.skirmish.level4.valueOf(),
+    ]
+    const wreck = [
+      postData.wreck.level1.valueOf(),
+      postData.wreck.level2.valueOf(),
+      postData.wreck.level3.valueOf(),
+      postData.wreck.level4.valueOf(),
+    ]
+    const attune = [
+      postData.attune.level1.valueOf(),
+      postData.attune.level2.valueOf(),
+      postData.attune.level3.valueOf(),
+      postData.attune.level4.valueOf(),
+    ]
+    const command = [
+      postData.command.level1.valueOf(),
+      postData.command.level2.valueOf(),
+      postData.command.level3.valueOf(),
+      postData.command.level4.valueOf(),
+    ]
+    const consort = [
+      postData.consort.level1.valueOf(),
+      postData.consort.level2.valueOf(),
+      postData.consort.level3.valueOf(),
+      postData.consort.level4.valueOf(),
+    ]
+    const sway = [
+      postData.sway.level1.valueOf(),
+      postData.sway.level2.valueOf(),
+      postData.sway.level3.valueOf(),
+      postData.sway.level4.valueOf(),
+    ]
+
+    const formData = {
+      char_id,
+      hunt,
+      study,
+      survey,
+      tinker,
+      finesse,
+      prowl,
+      skirmish,
+      wreck,
+      attune,
+      command,
+      consort,
+      sway
+    }
+    // this.supabaseService.updateCharacterTalents(formData, char_id, user),
+
+    //   console.log(hunt);
+    // console.log(char_id);
+    // console.log(user);
+
+    try {
+      await this.supabaseService.updateCharacterTalents(formData, char_id, user),
+        // this.editMode = !this.editMode;
+        await this.fetchData();
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+  async fetchData() {
+    try {
+      const [talentData] = await Promise.all([
+        this.supabaseService.getItemsByCharIdAndUser('talents', this.charId, this.user),
+      ]);
+      this.data = talentData;
+      this.insightNumber = 0;
+      this.prowessNumber = 0;
+      this.resolveNumber = 0;
+    } catch (error) {
+      console.error('Error fetching data with Promise.all:', error);
+    } finally {
+      this.checkInsightLevels()
+      this.checkProwessLevels()
+      this.checkResolveLevels()
+      this.editMode = !this.editMode;
+    }
   }
 
   checkInsightLevels() {

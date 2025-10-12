@@ -269,7 +269,7 @@
     }
 </div>
 <form [formGroup]="characterTalents" id="characterSheetTalentsFormContainer"
-    (ngSubmit)="onTalentsUpdate(characterTalents.value)">
+    (ngSubmit)="onTalentsUpdate(characterTalents.value, charId, user)">
 
     <div class="formFields">
         <div class="characterAttributesColumn">

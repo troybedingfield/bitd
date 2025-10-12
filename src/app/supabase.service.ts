@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { createClient, SupabaseClient, User } from '@supabase/supabase-js';
 import { environment } from '../environments/environment'; // Ensure this path is correct
 import { BehaviorSubject } from 'rxjs';
+import { CharacterTalents } from './components/character-sheet/character-talents/character-talents.model';
 
 @Injectable({
   providedIn: 'root',
@@ -82,6 +83,30 @@ export class SupabaseService {
   }
   async getItemsByCharIdAndUser(table: string, char_id: any, user: any) {
     const { data, error } = await this.supabaseClient.from(table).select('*').eq('char_id', char_id).eq('uuid', user);
+    if (error) {
+      throw error;
+    }
+    return data;
+  }
+  async updateCharacterTalents(postData: any, char_id: number, user: any) {
+    const { data, error } = await this.supabaseClient.from('talents')
+      .update({
+        hunt: postData.hunt,
+        study: postData.study,
+        survey: postData.survey,
+        tinker: postData.tinker,
+        finesse: postData.finesse,
+        prowl: postData.prowl,
+        skirmish: postData.skirmish,
+        wreck: postData.wreck,
+        attune: postData.attune,
+        command: postData.command,
+        consort: postData.consort,
+        sway: postData.sway,
+      })
+      .eq('uuid', user)
+      .eq('char_id', char_id)
+      .select()
     if (error) {
       throw error;
     }
