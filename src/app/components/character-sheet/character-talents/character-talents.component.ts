@@ -221,7 +221,6 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
       consort,
       sway
     }
-    // this.supabaseService.updateCharacterTalents(formData, char_id, user),
 
     //   console.log(hunt);
     // console.log(char_id);
@@ -229,7 +228,7 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
 
     try {
       await this.supabaseService.updateCharacterTalents(formData, char_id, user),
-        // this.editMode = !this.editMode;
+
         await this.fetchData();
 
     } catch (error) {
