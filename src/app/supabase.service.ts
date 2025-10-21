@@ -81,6 +81,7 @@ export class SupabaseService {
     }
     return data;
   }
+
   async getItemsByCharIdAndUser(table: string, char_id: any, user: any) {
     const { data, error } = await this.supabaseClient.from(table).select('*').eq('char_id', char_id).eq('uuid', user);
     if (error) {
@@ -88,6 +89,7 @@ export class SupabaseService {
     }
     return data;
   }
+
   async updateCharacterTalents(postData: any, char_id: number, user: any) {
     const { data, error } = await this.supabaseClient.from('talents')
       .update({
@@ -103,6 +105,26 @@ export class SupabaseService {
         command: postData.command,
         consort: postData.consort,
         sway: postData.sway,
+      })
+      .eq('uuid', user)
+      .eq('char_id', char_id)
+      .select()
+    if (error) {
+      throw error;
+    }
+    return data;
+  }
+
+  async updateCharacter(postData: any, char_id: number, user: any) {
+    const { data, error } = await this.supabaseClient.from('character')
+      .update({
+        characterName: postData.characterName,
+        characterAlias: postData.characterAlias,
+        characterBackground: postData.characterBackground,
+        characterHeritage: postData.characterHeritage,
+        characterVice: postData.characterVice,
+        characterLook: postData.characterLook,
+
       })
       .eq('uuid', user)
       .eq('char_id', char_id)

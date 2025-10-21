@@ -19,34 +19,34 @@
     <div class='container'>
         <div class="w-full xl:mx-12 sm:mx-auto">
             <div
-                class="characterName infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
-                <div class='flex sm:w-auto w-24'>Name:</div>
+                class="characterName infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2 h-9">
+                <div class='flex sm:w-auto w-24 '>Name:</div>
                 <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterName}}</span></div>
             </div>
             <div
-                class="characterChronicle infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                class="characterAlias infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2 h-9">
                 <div class='flex sm:w-auto w-24'>Alias: </div>
                 <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterAlias}}</span></div>
             </div>
             <div
-                class="characterSire infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                class="characterBackground infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2 h-9">
                 <div class='flex sm:w-auto w-24'>Background: </div>
                 <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterBackground}}</span></div>
             </div>
         </div>
         <div class="w-full xl:mx-12 sm:mx-auto">
             <div
-                class="characterConcept infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                class="characterHeritage infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2 h-9">
                 <div class='flex sm:w-auto w-24'>Heritage:</div>
                 <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterHeritage}}</span></div>
             </div>
             <div
-                class="characterAmbition infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                class="characterVice infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2 h-9">
                 <div class='flex sm:w-auto w-24'>Vice: </div>
                 <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterVice}}</span></div>
             </div>
             <div
-                class="characterDesire infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2">
+                class="characterLook infoItem container justify-center sm:justify-start flex sm:columns-auto columns-2 h-9">
                 <div class='flex sm:w-auto w-24'>Look: </div>
                 <div class='w-56 sm:w-auto'><span class='infoLabel'>{{item.characterLook}}</span></div>
             </div>
@@ -82,7 +82,7 @@
 
     }
 </div>
-<form [formGroup]="characterForm">
+<form [formGroup]="characterForm" (ngSubmit)="characterUpdate(characterForm.value, charId, user)">
     <label for="character-name">Name: </label>
     <input id="character-name" type="text" formControlName="characterName" value="{{item.characterName}}" />
     <label for="character-alias">Alias: </label>
@@ -94,21 +94,25 @@
         <option [value]="background">{{ background }}</option>
         }
     </select>
-    <textarea class="flex" name="backgroundNotes" id="backgroundNotes"></textarea>
+    <textarea formControlName="characterBackgroundNotes" class="flex" name="backgroundNotes"
+        id="backgroundNotes"></textarea>
     <label for="character-Background">Heritage: </label>
     <select class="form-control flex " id="heritage" required name="heritage">
         @for (heritage of heritages; track $index) {
         <option [value]="heritage">{{ heritage }}</option>
         }
     </select>
-    <textarea class="flex" name="heritageNotes" id="heritageNotes"></textarea>
+    <textarea formControlName="characterHeritageNotes" class="flex" name="heritageNotes" id="heritageNotes"></textarea>
     <label for="character-Background">Vice: </label>
     <select class="form-control flex " id="vice" required name="vice">
         @for (vice of vices; track $index) {
         <option [value]="vice">{{ vice }}</option>
         }
     </select>
-    <textarea class="flex" name="viceNotes" id="viceNotes"></textarea>
+    <textarea formControlName="characterViceNotes" class="flex" name="viceNotes" id="viceNotes"></textarea>
+    <label for="character-Look">Look: </label>
+    <textarea formControlName="characterLook" class="flex" name="characterLook" id="characterLook"
+        value="{{item.characterName}}"></textarea>
 
     <!-- <div>
 
@@ -127,6 +131,13 @@
        
     </label>
     } -->
+    <div class="buttonContainer">
+        <!-- <button class="btn btn-primary" type="submit">
+      Update
+    </button> -->
+        <app-button [size]="'small'" type="submit">Update</app-button>
+        <app-button [fill]="'outline'" [size]="'small'" type="cancel">Cancel</app-button>
+    </div>
 </form>
 }
 }
