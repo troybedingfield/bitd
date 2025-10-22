@@ -5,11 +5,11 @@ import { Subscription } from 'rxjs';
 import { CharacterDetailsComponent } from "./character-details/character-details.component";
 import { CharacterTalentsComponent } from "./character-talents/character-talents.component";
 import { LoadingspinnerComponent } from "../../shared/components/loadingspinner/loadingspinner.component";
-
+import { ClocksComponent } from '../clocks/clocks.component';
 
 @Component({
   selector: 'app-character-sheet',
-  imports: [CharacterDetailsComponent, CharacterTalentsComponent, LoadingspinnerComponent],
+  imports: [CharacterDetailsComponent, CharacterTalentsComponent, LoadingspinnerComponent, ClocksComponent],
   templateUrl: './character-sheet.component.html',
   styleUrl: './character-sheet.component.scss'
 })
