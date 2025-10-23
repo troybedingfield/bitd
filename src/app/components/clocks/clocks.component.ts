@@ -5,7 +5,7 @@ import * as echarts from 'echarts/core';
 import { BarChart, PieChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 echarts.use([BarChart, GridComponent, CanvasRenderer, PieChart]);
 
 @Component({
@@ -16,6 +16,8 @@ echarts.use([BarChart, GridComponent, CanvasRenderer, PieChart]);
   styleUrl: './clocks.component.scss'
 })
 export class ClocksComponent implements OnInit {
+
+  @ViewChild(NgxEchartsDirective) myChart: any;
 
   chartOptions = {
 
@@ -177,7 +179,7 @@ export class ClocksComponent implements OnInit {
     console.log(this.chartOptions.series[0].data)
     // this.chartOptions.series[0].data = modifiedArray;
     this.chartOptions.series[0].data.splice(0, this.chartOptions.series[0].data.length, ...modifiedArray)
-
+    this.myChart.setOption(this.chartOptions, true);
   }
 
 }
