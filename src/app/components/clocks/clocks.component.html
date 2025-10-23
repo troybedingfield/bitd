@@ -21,7 +21,7 @@
 
     <label for="clock-levels">Background: </label>
     <select class="form-control flex " id="clockLevels" required name="clockLevels" formControlName="clockLevels">
-        <option [ngValue]="null" disabled>Choose a clock</option> <!-- Optional: Placeholder option -->
+        <option [ngValue]="null" disabled>Choose a clock</option>
         @for (clock of clocks; track $index) {
         <option [value]="clock.value" type="number">{{ clock.value }}</option>
         }
@@ -30,16 +30,20 @@
     <p>Selected value: {{ clockForm.get('clockLevels')?.value }}</p>
 
     <div class="buttonContainer">
-        <!-- <button class="btn btn-primary" type="submit">
-      Update
-    </button> -->
+
         <app-button [size]="'small'" type="submit">Update</app-button>
         <app-button [fill]="'outline'" [size]="'small'" type="cancel">Cancel</app-button>
     </div>
 </form>
 
-<div echarts [options]="chartOptions" class="demo-chart"></div>
-<div id="buttonContainer">
-    <button (click)="rewindClock()">prev</button>
-    <button (click)="advanceClock()">next</button>
-</div>
+<!-- <div echarts [options]="chartOptions" class="demo-chart"></div>
+<div id="buttonContainer" class="flex">
+    <app-button class="flex" (click)="rewindClock()">prev</app-button>
+    <app-button class="flex" (click)="advanceClock()">next</app-button>
+</div> -->
+
+<app-fourclock></app-fourclock>
+<app-sixclock></app-sixclock>
+<app-eightclock></app-eightclock>
+<app-tenclock></app-tenclock>
+<app-twelveclock></app-twelveclock>

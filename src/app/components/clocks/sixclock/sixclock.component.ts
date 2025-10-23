@@ -6,24 +6,19 @@ import { BarChart, PieChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ButtonComponent } from "../../shared/components/button/button.component";
+import { ButtonComponent } from "../../../shared/components/button/button.component";
 echarts.use([BarChart, GridComponent, CanvasRenderer, PieChart]);
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FourclockComponent } from "./fourclock/fourclock.component";
-import { SixclockComponent } from "./sixclock/sixclock.component";
-import { EightclockComponent } from "./eightclock/eightclock.component";
-import { TenclockComponent } from "./tenclock/tenclock.component";
-import { TwelveclockComponent } from "./twelveclock/twelveclock.component";
+
 
 @Component({
-  selector: 'app-clocks',
-  imports: [ButtonComponent, ReactiveFormsModule, FourclockComponent, SixclockComponent, EightclockComponent, TenclockComponent, TwelveclockComponent], // Add NgxEchartsDirective to imports
+  selector: 'app-sixclock',
+  imports: [NgxEchartsDirective, ButtonComponent, ReactiveFormsModule],
+  templateUrl: './sixclock.component.html',
+  styleUrl: './sixclock.component.scss',
   providers: [provideEchartsCore({ echarts })],
-  templateUrl: './clocks.component.html',
-  styleUrl: './clocks.component.scss'
 })
-export class ClocksComponent implements OnInit {
-
+export class SixclockComponent implements OnInit {
   // clocks = ['4', '6', '8', '10', '12', '14', '16', '20'];
 
   clocks = [
@@ -183,5 +178,4 @@ export class ClocksComponent implements OnInit {
 
 
   }
-
 }
