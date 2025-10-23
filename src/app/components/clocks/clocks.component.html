@@ -16,8 +16,30 @@
         <span class="pie-slice4"></span>
     </label>
 </div> -->
+<form [formGroup]="clockForm" (ngSubmit)="clockUpdate(clockForm.value)">
+
+
+    <label for="clock-levels">Background: </label>
+    <select class="form-control flex " id="clockLevels" required name="clockLevels" formControlName="clockLevels">
+        <option [ngValue]="null" disabled>Choose a clock</option> <!-- Optional: Placeholder option -->
+        @for (clock of clocks; track $index) {
+        <option [value]="clock.value" type="number">{{ clock.value }}</option>
+        }
+    </select>
+
+    <p>Selected value: {{ clockForm.get('clockLevels')?.value }}</p>
+
+    <div class="buttonContainer">
+        <!-- <button class="btn btn-primary" type="submit">
+      Update
+    </button> -->
+        <app-button [size]="'small'" type="submit">Update</app-button>
+        <app-button [fill]="'outline'" [size]="'small'" type="cancel">Cancel</app-button>
+    </div>
+</form>
+
 <div echarts [options]="chartOptions" class="demo-chart"></div>
 <div id="buttonContainer">
-    <button>prev</button>
+    <button (click)="rewindClock()">prev</button>
     <button (click)="advanceClock()">next</button>
 </div>
