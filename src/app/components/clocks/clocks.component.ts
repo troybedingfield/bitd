@@ -24,27 +24,30 @@ import { TwelveclockComponent } from "./twelveclock/twelveclock.component";
 })
 export class ClocksComponent implements OnInit {
 
+
   // clocks = ['4', '6', '8', '10', '12', '14', '16', '20'];
 
   clocks = [
-    { value: '4' },
-    { value: '6' },
-    { value: '8' },
-    { value: '10' },
-    { value: '12' },
-    { value: '14' },
-    { value: '16' },
-    { value: '20' },
+    { value: 4 },
+    { value: 6 },
+    { value: 8 },
+    { value: 10 },
+    { value: 12 },
+    { value: 14 },
+    { value: 16 },
+    { value: 20 },
   ];
 
   clockForm = new FormGroup({
 
-    clockLevels: new FormControl(null, Validators.required),
+    clockLevels: new FormControl<number | null>(null, Validators.required),
 
 
 
 
   });
+
+
 
 
 

@@ -76,6 +76,7 @@ export class FourclockComponent implements OnInit {
           borderColor: '#000000'
         }
 
+
       }
     ]
 

@@ -21,7 +21,7 @@
 
     <label for="clock-levels">Background: </label>
     <select class="form-control flex " id="clockLevels" required name="clockLevels" formControlName="clockLevels">
-        <option [ngValue]="null" disabled>Choose a clock</option>
+        <!-- <option [ngValue]="null" disabled>Choose a clock</option> -->
         @for (clock of clocks; track $index) {
         <option [value]="clock.value" type="number">{{ clock.value }}</option>
         }
@@ -41,9 +41,19 @@
     <app-button class="flex" (click)="rewindClock()">prev</app-button>
     <app-button class="flex" (click)="advanceClock()">next</app-button>
 </div> -->
+@if (clockForm.get('clockLevels')?.value == 4) {
 
 <app-fourclock></app-fourclock>
+} @else if (clockForm.get('clockLevels')?.value == 6) {
+
 <app-sixclock></app-sixclock>
+} @else if (clockForm.get('clockLevels')?.value == 8) {
+
 <app-eightclock></app-eightclock>
+} @else if (clockForm.get('clockLevels')?.value == 10) {
+
 <app-tenclock></app-tenclock>
+} @else if (clockForm.get('clockLevels')?.value == 12) {
+
 <app-twelveclock></app-twelveclock>
+}
