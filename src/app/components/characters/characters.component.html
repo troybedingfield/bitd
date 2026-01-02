@@ -1,4 +1,7 @@
-@if (items.length === 0) {
+@if (loading === true) {
+<app-loadingspinner></app-loadingspinner>
+}
+@else if (items.length === 0) {
 <a routerLink="/createcharacter"
     class='container flex items-center content-center justify-center min-h-40 max-w-36 flex-col gap-2 border border-slate-300 rounded-lg cursor-pointer'>Create
     Character</a>
