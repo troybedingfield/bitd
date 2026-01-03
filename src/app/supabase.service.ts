@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { createClient, SupabaseClient, User } from '@supabase/supabase-js';
 import { environment } from '../environments/environment'; // Ensure this path is correct
 import { BehaviorSubject } from 'rxjs';
-import { CharacterTalents } from './components/character-sheet/character-talents/character-talents.model';
+// import { CharacterTalents } from './components/character-sheet/character-talents/character-talents.model';
 
 @Injectable({
   providedIn: 'root',

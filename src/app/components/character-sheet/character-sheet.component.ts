@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 import { SupabaseService } from '../../supabase.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,7 @@ import { ClocksComponent } from '../clocks/clocks.component';
   templateUrl: './character-sheet.component.html',
   styleUrl: './character-sheet.component.scss'
 })
-export class CharacterSheetComponent implements OnInit, AfterContentChecked, OnDestroy {
+export class CharacterSheetComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private supabaseService = inject(SupabaseService);
 
@@ -88,18 +88,18 @@ export class CharacterSheetComponent implements OnInit, AfterContentChecked, OnD
     // }
   }
 
-  async ngAfterViewInit() {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
+  // async ngAfterViewInit() {
+  //   //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+  //   //Add 'implements AfterViewInit' to the class.
 
-  }
+  // }
 
-  ngAfterContentChecked(): void {
-    //Called after every check of the component's or directive's content.
-    //Add 'implements AfterContentChecked' to the class.
-    // console.log(this.userSubscription)
+  // ngAfterContentChecked(): void {
+  //   //Called after every check of the component's or directive's content.
+  //   //Add 'implements AfterContentChecked' to the class.
+  //   // console.log(this.userSubscription)
 
-  }
+  // }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['characterInfo']) {
