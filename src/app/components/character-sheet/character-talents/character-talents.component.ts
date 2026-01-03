@@ -1,8 +1,8 @@
-import { AfterViewChecked, AfterViewInit, Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { ButtonComponent } from "../../../shared/components/button/button.component";
-import { CharacterTalents, hunt, study } from './character-talents.model';
-import { Subscription, startWith, pairwise } from 'rxjs';
-import { FormGroup, FormControl, ReactiveFormsModule, UntypedFormGroup, UntypedFormControl } from '@angular/forms';
+import { CharacterTalents, } from './character-talents.model';
+import { Subscription } from 'rxjs';
+import { ReactiveFormsModule, UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SupabaseService } from '../../../supabase.service';
 
@@ -12,7 +12,7 @@ import { SupabaseService } from '../../../supabase.service';
   templateUrl: './character-talents.component.html',
   styleUrl: './character-talents.component.scss'
 })
-export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterViewChecked {
+export class CharacterTalentsComponent implements OnInit {
   private supabaseService = inject(SupabaseService);
 
   userId: string | null = null;
@@ -227,10 +227,7 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
     // console.log(user);
 
     try {
-      await this.supabaseService.updateCharacterTalents(formData, char_id, user),
-
-        await this.fetchData();
-
+      await this.supabaseService.updateCharacterTalents(formData, char_id, user), await this.fetchData();
     } catch (error) {
       console.log(error)
     }
@@ -418,15 +415,5 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
     this.checkResolveLevels()
   }
 
-  ngAfterViewInit(): void {
-
-  }
-
-  ngAfterViewChecked(): void {
-    //Called after every check of the component's view. Applies to components only.
-    //Add 'implements AfterViewChecked' to the class.
-    // console.log(this.data[0].hunt)
-
-  }
 
 }

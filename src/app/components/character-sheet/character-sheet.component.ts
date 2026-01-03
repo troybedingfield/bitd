@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, SimpleChanges, inject, OnChanges } from '@angular/core';
 import { SupabaseService } from '../../supabase.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,7 @@ import { ClocksComponent } from '../clocks/clocks.component';
   templateUrl: './character-sheet.component.html',
   styleUrl: './character-sheet.component.scss'
 })
-export class CharacterSheetComponent implements OnInit, OnDestroy {
+export class CharacterSheetComponent implements OnInit, OnDestroy, OnChanges {
   private route = inject(ActivatedRoute);
   private supabaseService = inject(SupabaseService);
 

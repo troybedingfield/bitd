@@ -10,20 +10,20 @@ interface CheckboxItem {
   isChecked: boolean;
 }
 
-interface PostData {
+// interface PostData {
 
-  characterName: FormControl<string | null>;
-  characterAlias: FormControl<string | null>;
-  characterBackground: FormControl<string | null>;
-  characterBackgroundNotes: FormControl<string | null>;
-  characterHeritage: FormControl<string | null>;
-  characterHeritageNotes: FormControl<string | null>;
-  characterVice: FormControl<string | null>;
-  characterViceNotes: FormControl<string | null>;
-  characterLook: FormControl<string | null>;
-  stress: FormControl<any>;
+//   characterName: FormControl<string | null>;
+//   characterAlias: FormControl<string | null>;
+//   characterBackground: FormControl<string | null>;
+//   characterBackgroundNotes: FormControl<string | null>;
+//   characterHeritage: FormControl<string | null>;
+//   characterHeritageNotes: FormControl<string | null>;
+//   characterVice: FormControl<string | null>;
+//   characterViceNotes: FormControl<string | null>;
+//   characterLook: FormControl<string | null>;
+//   stress: FormControl<any>;
 
-}
+// }
 
 @Component({
   selector: 'app-character-details',
@@ -120,7 +120,7 @@ export class CharacterDetailsComponent implements AfterViewInit {
 
 
   async characterUpdate(postData: any, char_id: string, user: string | null) {
-    let charId = Number(char_id)
+    const charId = Number(char_id)
     const characterName = postData.characterName?.valueOf();
 
     const characterAlias = postData.characterAlias?.valueOf();

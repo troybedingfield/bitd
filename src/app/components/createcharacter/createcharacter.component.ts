@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -15,7 +15,7 @@ interface CheckboxItem {
   templateUrl: './createcharacter.component.html',
   styleUrl: './createcharacter.component.scss'
 })
-export class CreatecharacterComponent implements AfterViewInit {
+export class CreatecharacterComponent {
   backgrounds = ['Labor', 'Law', 'Trade', 'Military', 'Noble', 'Underworld'];
   heritages = ['The Dagger Isles', 'Iruvia', "Severos", 'Skolvan', 'Tycheros'];
   vices = ['Faith', 'Gablming', 'Luxury', 'Pleasure', 'Obligation', 'Stupor', 'Weird'];
@@ -52,11 +52,11 @@ export class CreatecharacterComponent implements AfterViewInit {
 
   });
 
-  ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
+  // ngAfterViewInit(): void {
+  //   //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+  //   //Add 'implements AfterViewInit' to the class.
 
-  }
+  // }
 
   onCheckboxChange(index: number, isChecked: boolean): void {
     // Update the clicked checkbox's state
