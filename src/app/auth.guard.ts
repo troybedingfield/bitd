@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { SupabaseClient, createClient } from '@supabase/supabase-js';
 import { environment } from '../environments/environment';
@@ -7,9 +7,11 @@ import { environment } from '../environments/environment';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
+  private router = inject(Router);
+
   private supabase: SupabaseClient;
 
-  constructor(private router: Router) {
+  constructor() {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
   }
 

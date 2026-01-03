@@ -13,11 +13,8 @@ import { ButtonComponent } from '../../shared/components/button/button.component
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  private router = inject(Router);
 
-
-  constructor(private router: Router) {
-
-  }
 
   navigateToLogin() {
     this.router.navigate(['/login']);

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SupabaseService } from './supabase.service';
@@ -9,16 +9,16 @@ import { SupabaseService } from './supabase.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
+  private supabaseService = inject(SupabaseService);
+
   title = 'bitd';
 
   userSubscription: Subscription | undefined;
 
-  constructor(private supabaseService: SupabaseService) { }
-
   ngOnInit(): void {
     this.userSubscription = this.supabaseService.user$.subscribe((user) => {
-      // console.log('Current user:', user);
+      console.log('Current user:', user);
     });
   }
 

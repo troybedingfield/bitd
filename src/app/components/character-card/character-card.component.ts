@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './character-card.component.scss'
 })
 export class CharacterCardComponent {
-  @Input() charID: any;
+  @Input() charID: string | undefined;
 
 }

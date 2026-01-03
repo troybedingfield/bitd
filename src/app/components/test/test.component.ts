@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, inject, AfterContentChecked } from '@angular/core';
 import { SupabaseService } from '../../supabase.service';
 import { NgFor } from '@angular/common';
 import { User } from '@supabase/supabase-js';
@@ -9,11 +9,11 @@ import { User } from '@supabase/supabase-js';
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
 })
-export class TestComponent implements OnInit, AfterViewInit {
+export class TestComponent implements OnInit, AfterViewInit, AfterContentChecked {
+  private supabaseService = inject(SupabaseService);
+
   items: any[] = [];
   currentUser: User | null = null;
-
-  constructor(private supabaseService: SupabaseService) { }
 
   async ngOnInit() {
     try {

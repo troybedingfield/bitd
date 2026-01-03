@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, Component, OnDestroy, OnInit, SimpleChanges, inject } from '@angular/core';
 import { SupabaseService } from '../../supabase.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -14,15 +14,16 @@ import { ClocksComponent } from '../clocks/clocks.component';
   styleUrl: './character-sheet.component.scss'
 })
 export class CharacterSheetComponent implements OnInit, AfterContentChecked, OnDestroy {
-  characterInfo: any[] = []
-  talent: any[] = []
-  userId: string | null = null;
-  user: any;
-  userNew: any;
+  private route = inject(ActivatedRoute);
+  private supabaseService = inject(SupabaseService);
+
+  characterInfo: (string | undefined)[] = []
+  talent: (string | undefined)[] = []
+  userId: string | number | null = null;
+  user: string | null = null;
+  userNew: string | null = null;
   userSubscription: Subscription | undefined;
   loading = true;
-
-  constructor(private route: ActivatedRoute, private supabaseService: SupabaseService) { }
 
   async ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -30,7 +31,7 @@ export class CharacterSheetComponent implements OnInit, AfterContentChecked, OnD
     });
     this.userSubscription = this.supabaseService.user$.subscribe((user) => {
       console.log('Current user:', user);
-      this.userNew = user?.id
+      this.userNew = user!.id
     });
     // try {
     //   this.characterInfo = await this.supabaseService.getItems('character');

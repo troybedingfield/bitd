@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core'
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SupabaseService } from '../supabase.service'
-import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,11 +10,12 @@ import { Router } from '@angular/router';
   imports: [ReactiveFormsModule, FormsModule]
 })
 export class AuthComponent {
+  private supabaseService = inject(SupabaseService);
+  private router = inject(Router);
+
   email = '';
   password = '';
   errorMessage = '';
-
-  constructor(private supabaseService: SupabaseService, private router: Router) { }
 
   async login() {
     try {
@@ -28,8 +28,12 @@ export class AuthComponent {
         console.log('Login successful');
         this.router.navigate(['/dashboard']);
       }
-    } catch (error: any) {
-      this.errorMessage = error.message;
+    } catch (error: unknown) {
+      let errorMessage = "Failed to do something exceptional";
+      this.errorMessage = errorMessage;
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
     }
   }
   // loading = false

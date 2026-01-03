@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, Input, OnInit, inject } from '@angular/core';
 import { ButtonComponent } from "../../../shared/components/button/button.component";
 import { CharacterTalents, hunt, study } from './character-talents.model';
 import { Subscription, startWith, pairwise } from 'rxjs';
@@ -13,20 +13,22 @@ import { SupabaseService } from '../../../supabase.service';
   styleUrl: './character-talents.component.scss'
 })
 export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterViewChecked {
+  private supabaseService = inject(SupabaseService);
+
   userId: string | null = null;
   @Input() charId: any;
   @Input() data: any[] = [];
   @Input() user: any;
-  editMode: boolean = false;
+  editMode = false;
 
   loadedTalents: CharacterTalents[] = [];
   subscription: Subscription = new Subscription;
 
   id!: number;
-  isFetching: boolean = false;
-  insightNumber: number = 0;
-  prowessNumber: number = 0;
-  resolveNumber: number = 0;
+  isFetching = false;
+  insightNumber = 0;
+  prowessNumber = 0;
+  resolveNumber = 0;
 
 
   huntBoolean: boolean[] = []
@@ -41,8 +43,6 @@ export class CharacterTalentsComponent implements OnInit, AfterViewInit, AfterVi
   commandBoolean: boolean[] = []
   consortBoolean: boolean[] = []
   swayBoolean: boolean[] = []
-
-  constructor(private supabaseService: SupabaseService) { }
 
   characterTalents = new UntypedFormGroup({
     hunt: new UntypedFormGroup({

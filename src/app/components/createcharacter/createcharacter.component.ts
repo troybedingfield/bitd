@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -15,7 +15,7 @@ interface CheckboxItem {
   templateUrl: './createcharacter.component.html',
   styleUrl: './createcharacter.component.scss'
 })
-export class CreatecharacterComponent {
+export class CreatecharacterComponent implements AfterViewInit {
   backgrounds = ['Labor', 'Law', 'Trade', 'Military', 'Noble', 'Underworld'];
   heritages = ['The Dagger Isles', 'Iruvia', "Severos", 'Skolvan', 'Tycheros'];
   vices = ['Faith', 'Gablming', 'Luxury', 'Pleasure', 'Obligation', 'Stupor', 'Weird'];

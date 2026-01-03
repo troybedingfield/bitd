@@ -1,7 +1,7 @@
 @if (data[0].uuid === user) {
 @for (item of data; track $index) {
 @if (item.id == charId) {
-@if (editMode===false) {
+@if (editMode === false) {
 
 <div id="sectionTitle flex">
     @if (item.length >= 1 && editMode === false) {
@@ -82,7 +82,7 @@
 
     }
 </div>
-<form [formGroup]="characterForm" (ngSubmit)="characterUpdate(characterForm.value, charId, user)">
+<form [formGroup]="characterForm" (ngSubmit)="characterUpdate(characterForm.value, charId!, user)">
     <label for="character-name">Name: </label>
     <input id="character-name" type="text" formControlName="characterName" value="{{item.characterName}}" />
     <label for="character-alias">Alias: </label>

@@ -12,7 +12,7 @@ import { NgStyle } from '@angular/common';
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  @Input() label: string = '';
+  @Input() label = '';
   @Input() color: 'default' | 'success' | 'warning' | 'error' | 'disabled' | undefined = 'default';
   @Input() disabled: boolean | undefined = false;
   @Input() fill: 'solid' | 'outline' | 'clear' | undefined = 'solid';

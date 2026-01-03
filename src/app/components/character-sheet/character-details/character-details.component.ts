@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, inject } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { SupabaseService } from '../../../supabase.service';
 import { ButtonComponent } from "../../../shared/components/button/button.component";
@@ -10,6 +10,21 @@ interface CheckboxItem {
   isChecked: boolean;
 }
 
+interface PostData {
+
+  characterName: FormControl<string | null>;
+  characterAlias: FormControl<string | null>;
+  characterBackground: FormControl<string | null>;
+  characterBackgroundNotes: FormControl<string | null>;
+  characterHeritage: FormControl<string | null>;
+  characterHeritageNotes: FormControl<string | null>;
+  characterVice: FormControl<string | null>;
+  characterViceNotes: FormControl<string | null>;
+  characterLook: FormControl<string | null>;
+  stress: FormControl<any>;
+
+}
+
 @Component({
   selector: 'app-character-details',
   imports: [ReactiveFormsModule, ButtonComponent],
@@ -17,13 +32,13 @@ interface CheckboxItem {
   styleUrl: './character-details.component.scss'
 })
 export class CharacterDetailsComponent implements AfterViewInit {
-  userId: string | null = null;
-  @Input() charId: any;
-  @Input() data: any[] = [];
-  @Input() user: any;
-  editMode: boolean = false;
+  private supabaseService = inject(SupabaseService);
 
-  constructor(private supabaseService: SupabaseService) { }
+  userId: string | null = null;
+  @Input() charId: string | null = null;
+  @Input() data: any[] = [];
+  @Input() user: string | null = null;
+  editMode = false;
 
   backgrounds = ['Labor', 'Law', 'Trade', 'Military', 'Noble', 'Underworld'];
   heritages = ['The Dagger Isles', 'Iruvia', "Severos", 'Skolvan', 'Tycheros'];
@@ -104,21 +119,22 @@ export class CharacterDetailsComponent implements AfterViewInit {
 
 
 
-  async characterUpdate(postData: any, char_id: number, user: any) {
-    const characterName = postData.characterName.valueOf();
+  async characterUpdate(postData: any, char_id: string, user: string | null) {
+    let charId = Number(char_id)
+    const characterName = postData.characterName?.valueOf();
 
-    const characterAlias = postData.characterAlias.valueOf();
-    const characterBackground = postData.characterBackground.valueOf();
-    const characterBackgroundNotes = postData.characterBackgroundNotes.valueOf();
-    const characterHeritage = postData.characterHeritage.valueOf();
-    const characterHeritageNotes = postData.characterHeritageNotes.valueOf();
-    const characterVice = postData.characterVice.valueOf();
-    const characterViceNotes = postData.characterViceNotes.valueOf();
-    const characterLook = postData.characterLook.valueOf();
+    const characterAlias = postData.characterAlias?.valueOf();
+    const characterBackground = postData.characterBackground?.valueOf();
+    const characterBackgroundNotes = postData.characterBackgroundNotes?.valueOf();
+    const characterHeritage = postData.characterHeritage?.valueOf();
+    const characterHeritageNotes = postData.characterHeritageNotes?.valueOf();
+    const characterVice = postData.characterVice?.valueOf();
+    const characterViceNotes = postData.characterViceNotes?.valueOf();
+    const characterLook = postData.characterLook?.valueOf();
 
 
     const formData = {
-      char_id,
+      charId,
       characterName,
       characterAlias,
       characterBackground,
@@ -135,7 +151,7 @@ export class CharacterDetailsComponent implements AfterViewInit {
     console.log(user);
 
     try {
-      await this.supabaseService.updateCharacter(formData, char_id, user),
+      await this.supabaseService.updateCharacter(formData, charId, user),
 
         await this.fetchData();
 

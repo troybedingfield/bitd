@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { User } from '@supabase/supabase-js';
 import { SupabaseService } from '../../supabase.service';
 import { CharacterCardComponent } from "../character-card/character-card.component";
@@ -11,11 +11,11 @@ import { LoadingspinnerComponent } from '../../shared/components/loadingspinner/
   styleUrl: './characters.component.scss'
 })
 export class CharactersComponent implements OnInit {
+  private supabaseService = inject(SupabaseService);
+
   items: any[] = [];
   currentUser: User | null = null;
   loading = true;
-
-  constructor(private supabaseService: SupabaseService) { }
 
   async ngOnInit() {
     try {
