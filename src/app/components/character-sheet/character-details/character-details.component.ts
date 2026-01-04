@@ -34,8 +34,8 @@ interface CheckboxItem {
 export class CharacterDetailsComponent implements AfterViewInit {
   private supabaseService = inject(SupabaseService);
 
-  userId: string | null = null;
-  @Input() charId: string | null = null;
+  userId: any;
+  @Input() charId: any;
   @Input() data: any[] = [];
   @Input() user: string | null = null;
   editMode = false;
