@@ -15,8 +15,8 @@ import { SupabaseService } from '../../../supabase.service';
 export class CharacterTalentsComponent implements OnInit {
   private supabaseService = inject(SupabaseService);
 
-  userId: string | null = null;
-  @Input() charId: any;
+  userId: number | null = null;
+  @Input() charId: number | null = null;
   @Input() data: any[] = [];
   @Input() user: any;
   editMode = false;
@@ -131,7 +131,7 @@ export class CharacterTalentsComponent implements OnInit {
     }),
   });
 
-  async onTalentsUpdate(postData: any, char_id: number, user: any) {
+  async onTalentsUpdate(postData: any, char_id: number | null = 0, user: any) {
     const hunt = [
       postData.hunt.level1.valueOf(),
       postData.hunt.level2.valueOf(),

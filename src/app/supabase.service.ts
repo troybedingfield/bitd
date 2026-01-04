@@ -82,7 +82,7 @@ export class SupabaseService {
     return data;
   }
 
-  async getItemsByCharIdAndUser(table: string, char_id: any, user: any) {
+  async getItemsByCharIdAndUser(table: string, char_id: string | number | null, user: any) {
     const { data, error } = await this.supabaseClient.from(table).select('*').eq('char_id', char_id).eq('uuid', user);
     if (error) {
       throw error;
@@ -90,7 +90,7 @@ export class SupabaseService {
     return data;
   }
 
-  async updateCharacterTalents(postData: any, char_id: number, user: any) {
+  async updateCharacterTalents(postData: any, char_id: number | null = 0, user: any) {
     const { data, error } = await this.supabaseClient.from('talents')
       .update({
         hunt: postData.hunt,

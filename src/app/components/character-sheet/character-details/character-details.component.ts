@@ -25,6 +25,19 @@ interface CheckboxItem {
 
 // }
 
+interface Data {
+  id: number,
+  char_id: number,
+  uuid: string,
+  characterName: string,
+  characterAlias: string,
+  characterBackground: string,
+  characterHeritage: string,
+  characterVice: string,
+  characterLook: string,
+  length: number
+}
+
 @Component({
   selector: 'app-character-details',
   imports: [ReactiveFormsModule, ButtonComponent],
@@ -34,9 +47,9 @@ interface CheckboxItem {
 export class CharacterDetailsComponent implements AfterViewInit {
   private supabaseService = inject(SupabaseService);
 
-  userId: any;
-  @Input() charId: any;
-  @Input() data: any[] = [];
+  userId: number | null = null;
+  @Input() charId: number | null = 0;
+  @Input() data: Data[] = [];
   @Input() user: string | null = null;
   editMode = false;
 
@@ -119,7 +132,7 @@ export class CharacterDetailsComponent implements AfterViewInit {
 
 
 
-  async characterUpdate(postData: any, char_id: string, user: string | null) {
+  async characterUpdate(postData: any, char_id: number, user: string | null) {
     const charId = Number(char_id)
     const characterName = postData.characterName?.valueOf();
 

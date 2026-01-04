@@ -7,6 +7,19 @@ import { CharacterTalentsComponent } from "./character-talents/character-talents
 import { LoadingspinnerComponent } from "../../shared/components/loadingspinner/loadingspinner.component";
 import { ClocksComponent } from '../clocks/clocks.component';
 
+interface characterInfo {
+  id: number,
+  char_id: number,
+  uuid: string,
+  characterName: string,
+  characterAlias: string,
+  characterBackground: string,
+  characterHeritage: string,
+  characterVice: string,
+  characterLook: string,
+  length: number
+}
+
 @Component({
   selector: 'app-character-sheet',
   imports: [CharacterDetailsComponent, CharacterTalentsComponent, LoadingspinnerComponent, ClocksComponent],
@@ -17,9 +30,9 @@ export class CharacterSheetComponent implements OnInit, OnDestroy, OnChanges {
   private route = inject(ActivatedRoute);
   private supabaseService = inject(SupabaseService);
 
-  characterInfo: (string | undefined)[] = []
+  characterInfo: characterInfo[] = []
   talent: (string | undefined)[] = []
-  userId: string | number | null = null;
+  userId: number | null = null;
   user: string | null = null;
   userNew: string | null = null;
   userSubscription: Subscription | undefined;
@@ -27,7 +40,8 @@ export class CharacterSheetComponent implements OnInit, OnDestroy, OnChanges {
 
   async ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.userId = params.get('id');
+      // this.userId = params.get('id');
+      this.userId = Number(params.get('id'))
     });
     this.userSubscription = this.supabaseService.user$.subscribe((user) => {
       console.log('Current user:', user);
