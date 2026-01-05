@@ -4,7 +4,7 @@
 @if (editMode === false) {
 
 <div id="sectionTitle flex">
-    @if (item.length >= 1 && editMode === false) {
+    @if (getObjectLength(item) >= 1 && editMode === false) {
 
     <div class="sectionTitle flex">Info</div>
     <button class="editBtn flex" (click)="editForm()">Save</button>
@@ -72,7 +72,7 @@
 </div>
 } @else {
 <div id="sectionTitle flex">
-    @if (item.length >= 1 && editMode === true) {
+    @if (getObjectLength(item) >= 1 && editMode === true) {
 
     <div class="sectionTitle flex">Info</div>
     <button class="editBtn flex" (click)="editForm()">Edit</button>

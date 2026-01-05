@@ -10,32 +10,33 @@ interface CheckboxItem {
   isChecked: boolean;
 }
 
-// interface PostData {
 
-//   characterName: FormControl<string | null>;
-//   characterAlias: FormControl<string | null>;
-//   characterBackground: FormControl<string | null>;
-//   characterBackgroundNotes: FormControl<string | null>;
-//   characterHeritage: FormControl<string | null>;
-//   characterHeritageNotes: FormControl<string | null>;
-//   characterVice: FormControl<string | null>;
-//   characterViceNotes: FormControl<string | null>;
-//   characterLook: FormControl<string | null>;
-//   stress: FormControl<any>;
+interface Pdata {
 
-// }
+  characterName?: string | null | undefined,
+  characterAlias?: string | null | undefined,
+  characterBackground?: string | null | undefined,
+  characterBackgroundNotes?: string | null | undefined,
+  characterHeritage?: string | null | undefined,
+  characterHeritageNotes?: string | null | undefined,
+  characterVice?: string | null | undefined,
+  characterViceNotes?: string | null | undefined,
+  characterLook?: string | null | undefined,
+}
 
 interface Data {
   id: number,
   char_id: number,
   uuid: string,
-  characterName: string,
-  characterAlias: string,
-  characterBackground: string,
-  characterHeritage: string,
-  characterVice: string,
-  characterLook: string,
-  length: number
+  characterName?: string | null | undefined,
+  characterAlias?: string | null | undefined,
+  characterBackground?: string | null | undefined,
+  characterBackgroundNotes?: string | null | undefined,
+  characterHeritage?: string | null | undefined,
+  characterHeritageNotes?: string | null | undefined,
+  characterVice?: string | null | undefined,
+  characterViceNotes?: string | null | undefined,
+  characterLook?: string | null | undefined,
 }
 
 @Component({
@@ -102,7 +103,7 @@ export class CharacterDetailsComponent implements AfterViewInit {
 
       })
     }
-    // console.log(this.data)
+    // console.log(this.getObjectLength(this.data[0]))
   }
 
   editForm() {
@@ -132,7 +133,7 @@ export class CharacterDetailsComponent implements AfterViewInit {
 
 
 
-  async characterUpdate(postData: any, char_id: number, user: string | null) {
+  async characterUpdate(postData: Pdata, char_id: number, user: string | null) {
     const charId = Number(char_id)
     const characterName = postData.characterName?.valueOf();
 
@@ -190,6 +191,10 @@ export class CharacterDetailsComponent implements AfterViewInit {
       // this.checkResolveLevels()
       this.editMode = !this.editMode;
     }
+  }
+
+  getObjectLength(obj: Data): number {
+    return Object.keys(obj).length;
   }
 
 }

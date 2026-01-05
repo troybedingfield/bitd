@@ -14,8 +14,11 @@ interface characterInfo {
   characterName: string,
   characterAlias: string,
   characterBackground: string,
+  characterBackgroundNotes: string,
   characterHeritage: string,
+  characterHeritageNotes: string,
   characterVice: string,
+  characterViceNotes: string,
   characterLook: string,
   length: number
 }
