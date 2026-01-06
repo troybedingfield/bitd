@@ -6,7 +6,7 @@ import { CharacterDetailsComponent } from "./character-details/character-details
 import { CharacterTalentsComponent } from "./character-talents/character-talents.component";
 import { LoadingspinnerComponent } from "../../shared/components/loadingspinner/loadingspinner.component";
 import { ClocksComponent } from '../clocks/clocks.component';
-import { CharacterTalents } from './character-talents/character-talents.model';
+
 
 interface characterInfo {
   id: number,
@@ -23,6 +23,25 @@ interface characterInfo {
   characterLook: string,
   length: number
 }
+
+interface CharacterTalents {
+  id: number,
+  char_id: number,
+  uuid: string,
+  hunt: boolean[],
+  study: boolean[],
+  survey: boolean[],
+  tinker: boolean[],
+  finesse: boolean[],
+  prowl: boolean[],
+  skirmish: boolean[],
+  wreck: boolean[],
+  attune: boolean[],
+  command: boolean[],
+  consort: boolean[],
+  sway: boolean[]
+}
+
 
 @Component({
   selector: 'app-character-sheet',
