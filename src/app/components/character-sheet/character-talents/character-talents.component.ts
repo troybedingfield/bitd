@@ -5,7 +5,23 @@ import { Subscription } from 'rxjs';
 import { ReactiveFormsModule, UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SupabaseService } from '../../../supabase.service';
-
+interface Data {
+  id: number,
+  char_id: number,
+  uuid: string,
+  hunt: boolean[],
+  study: boolean[],
+  survey: boolean[],
+  tinker: boolean[],
+  finesse: boolean[],
+  prowl: boolean[],
+  skirmish: boolean[],
+  wreck: boolean[],
+  attune: boolean[],
+  command: boolean[],
+  consort: boolean[],
+  sway: boolean[]
+}
 @Component({
   selector: 'app-character-talents',
   imports: [ButtonComponent, ReactiveFormsModule, CommonModule],
@@ -131,7 +147,7 @@ export class CharacterTalentsComponent implements OnInit {
     }),
   });
 
-  async onTalentsUpdate(postData: any, char_id: number | null = 0, user: any) {
+  async onTalentsUpdate(postData: CharacterTalents, char_id: number | null = 0, user: string) {
     const hunt = [
       postData.hunt.level1.valueOf(),
       postData.hunt.level2.valueOf(),
