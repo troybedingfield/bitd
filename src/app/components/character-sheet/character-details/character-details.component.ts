@@ -11,7 +11,7 @@ interface CheckboxItem {
 }
 
 
-interface Pdata {
+interface PostData {
 
   characterName?: string | null | undefined,
   characterAlias?: string | null | undefined,
@@ -133,7 +133,7 @@ export class CharacterDetailsComponent implements AfterViewInit {
 
 
 
-  async characterUpdate(postData: Pdata, char_id: number, user: string | null) {
+  async characterUpdate(postData: PostData, char_id: number, user: string | null) {
     const charId = Number(char_id)
     const characterName = postData.characterName?.valueOf();
 

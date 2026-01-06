@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { NgStyle } from '@angular/common';
+
 
 @Component({
   selector: 'app-button',
@@ -25,9 +25,9 @@ export class ButtonComponent {
   @Input() customBorderColor: string | undefined;
 
   @Output()
-  onClick = new EventEmitter<Event>();
+  buttonClick = new EventEmitter<Event>();
 
-  constructor() { }
+
 
 
 }

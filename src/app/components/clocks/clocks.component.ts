@@ -47,12 +47,12 @@ export class ClocksComponent implements OnInit {
 
   });
 
+  myControl = this.clockForm.get('clockLevels') as FormControl<number>;
 
 
 
 
-
-  @ViewChild(NgxEchartsDirective) myChart: any;
+  @ViewChild(NgxEchartsDirective) myChart: echarts.ECharts | undefined;
 
   chartOptions = {
     series: [
@@ -132,7 +132,7 @@ export class ClocksComponent implements OnInit {
     console.log(this.chartOptions.series[0].data)
     // this.chartOptions.series[0].data = modifiedArray;
     this.chartOptions.series[0].data.splice(0, this.chartOptions.series[0].data.length, ...modifiedArray)
-    this.myChart.setOption(this.chartOptions, true);
+    this.myChart?.setOption(this.chartOptions, true);
   }
   rewindClock() {
     const targetValue = "green";
@@ -160,7 +160,7 @@ export class ClocksComponent implements OnInit {
     modifiedArray.push(firstElement);
 
     this.chartOptions.series[0].data.splice(0, this.chartOptions.series[0].data.length, ...modifiedArray)
-    this.myChart.setOption(this.chartOptions, true);
+    this.myChart?.setOption(this.chartOptions, true);
   }
 
 
@@ -169,7 +169,7 @@ export class ClocksComponent implements OnInit {
 
   async clockUpdate(postData: any) {
 
-    const clockLevels = postData.clockLevels.valueOf();
+    const clockLevels = Number(postData.clockLevels.valueOf());
 
 
 
@@ -180,7 +180,9 @@ export class ClocksComponent implements OnInit {
 
     }
 
+
     console.log(formData);
+    console.log(this.myControl.value)
     // console.log(char_id);
     // console.log(user);
 

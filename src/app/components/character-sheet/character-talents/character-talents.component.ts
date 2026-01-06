@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { ButtonComponent } from "../../../shared/components/button/button.component";
-import { CharacterTalents, } from './character-talents.model';
+import { CharacterTalents } from './character-talents.model';
 import { Subscription } from 'rxjs';
 import { ReactiveFormsModule, UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -18,7 +18,7 @@ export class CharacterTalentsComponent implements OnInit {
   userId: number | null = null;
   @Input() charId: number | null = null;
   @Input() data: any[] = [];
-  @Input() user: any;
+  @Input() user: string | null = null;
   editMode = false;
 
   loadedTalents: CharacterTalents[] = [];
@@ -413,6 +413,11 @@ export class CharacterTalentsComponent implements OnInit {
     this.checkInsightLevels()
     this.checkProwessLevels()
     this.checkResolveLevels()
+  }
+
+
+  getObjectLength(obj: CharacterTalents): number {
+    return Object.keys(obj).length;
   }
 
 

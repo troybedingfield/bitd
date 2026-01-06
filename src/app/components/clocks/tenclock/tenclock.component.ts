@@ -43,7 +43,7 @@ export class TenclockComponent implements OnInit {
 
 
 
-  @ViewChild(NgxEchartsDirective) myChart: any;
+  @ViewChild(NgxEchartsDirective) myChart: echarts.ECharts | undefined;
 
   chartOptions = {
     series: [
@@ -91,9 +91,7 @@ export class TenclockComponent implements OnInit {
     this.chartOptions
   }
 
-  constructor() {
 
-  }
 
   advanceClock() {
     const targetValue = "white";
@@ -127,7 +125,7 @@ export class TenclockComponent implements OnInit {
     console.log(this.chartOptions.series[0].data)
     // this.chartOptions.series[0].data = modifiedArray;
     this.chartOptions.series[0].data.splice(0, this.chartOptions.series[0].data.length, ...modifiedArray)
-    this.myChart.setOption(this.chartOptions, true);
+    this.myChart?.setOption(this.chartOptions, true);
   }
   rewindClock() {
     const targetValue = "green";
@@ -155,7 +153,7 @@ export class TenclockComponent implements OnInit {
     modifiedArray.push(firstElement);
 
     this.chartOptions.series[0].data.splice(0, this.chartOptions.series[0].data.length, ...modifiedArray)
-    this.myChart.setOption(this.chartOptions, true);
+    this.myChart?.setOption(this.chartOptions, true);
   }
 
 

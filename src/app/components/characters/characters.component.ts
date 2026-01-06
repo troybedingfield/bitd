@@ -3,7 +3,10 @@ import { User } from '@supabase/supabase-js';
 import { SupabaseService } from '../../supabase.service';
 import { CharacterCardComponent } from "../character-card/character-card.component";
 import { LoadingspinnerComponent } from '../../shared/components/loadingspinner/loadingspinner.component';
-
+interface Data {
+  id: number,
+  characterName: string,
+}
 @Component({
   selector: 'app-characters',
   imports: [CharacterCardComponent, LoadingspinnerComponent],
@@ -13,7 +16,7 @@ import { LoadingspinnerComponent } from '../../shared/components/loadingspinner/
 export class CharactersComponent implements OnInit {
   private supabaseService = inject(SupabaseService);
 
-  items: any[] = [];
+  items: Data[] = [];
   currentUser: User | null = null;
   loading = true;
 

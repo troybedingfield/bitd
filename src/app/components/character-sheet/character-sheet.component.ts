@@ -6,6 +6,7 @@ import { CharacterDetailsComponent } from "./character-details/character-details
 import { CharacterTalentsComponent } from "./character-talents/character-talents.component";
 import { LoadingspinnerComponent } from "../../shared/components/loadingspinner/loadingspinner.component";
 import { ClocksComponent } from '../clocks/clocks.component';
+import { CharacterTalents } from './character-talents/character-talents.model';
 
 interface characterInfo {
   id: number,
@@ -34,7 +35,7 @@ export class CharacterSheetComponent implements OnInit, OnDestroy, OnChanges {
   private supabaseService = inject(SupabaseService);
 
   characterInfo: characterInfo[] = []
-  talent: (string | undefined)[] = []
+  talent: CharacterTalents[] = []
   userId: number | null = null;
   user: string | null = null;
   userNew: string | null = null;

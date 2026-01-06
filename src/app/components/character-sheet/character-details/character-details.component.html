@@ -7,10 +7,10 @@
     @if (getObjectLength(item) >= 1 && editMode === false) {
 
     <div class="sectionTitle flex">Info</div>
-    <button class="editBtn flex" (click)="editForm()">Save</button>
+    <button class="editBtn flex" (click)="editForm()">Edit</button>
     } @else {
     <div class="sectionTitle flex">Info</div>
-    <button class="editBtn flex" (click)="editForm()">Edit</button>
+    <button class="editBtn flex" (click)="editForm()">Save</button>
 
     }
 </div>
@@ -75,10 +75,10 @@
     @if (getObjectLength(item) >= 1 && editMode === true) {
 
     <div class="sectionTitle flex">Info</div>
-    <button class="editBtn flex" (click)="editForm()">Edit</button>
+    <button class="editBtn flex" (click)="editForm()">Save</button>
     } @else {
     <div class="sectionTitle flex">Info</div>
-    <button class="editBtn flex" (click)="editForm()">Save</button>
+    <button class="editBtn flex" (click)="editForm()">Edit</button>
 
     }
 </div>

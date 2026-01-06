@@ -9,8 +9,10 @@
 } @else {
 
 @for (item of items; track item.id) {
-<app-character-card [charID]="item.id">{{ item.characterName }}<br />{{ item.charChronicle
-    }}</app-character-card>
+<app-character-card [charID]="item.id">{{ item.characterName }}
+    <!-- <br />
+    {{ item.charChronicle }} -->
+</app-character-card>
 }
 <!-- @empty {
 <div>No items to display.</div>

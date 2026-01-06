@@ -1,4 +1,7 @@
 export class CharacterTalents {
+  public id: number;
+  public char_id: number;
+  public uuid: string;
   public hunt: hunt;
   public study: study;
   public survey: survey;
@@ -11,9 +14,12 @@ export class CharacterTalents {
   public command: command;
   public consort: consort;
   public sway: sway;
-  public id?: string;
+
 
   constructor(
+    id: number,
+    char_id: number,
+    uuid: string,
     hunt: hunt,
     study: study,
     survey: survey,
@@ -26,7 +32,7 @@ export class CharacterTalents {
     command: command,
     consort: consort,
     sway: sway,
-    id?: string) {
+  ) {
     this.hunt = hunt;
     this.study = study;
     this.survey = survey;
@@ -40,6 +46,8 @@ export class CharacterTalents {
     this.consort = consort;
     this.sway = sway;
     this.id = id;
+    this.char_id = char_id;
+    this.uuid = uuid;
   }
 
 }
