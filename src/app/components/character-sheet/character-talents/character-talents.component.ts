@@ -5,23 +5,23 @@ import { Subscription } from 'rxjs';
 import { ReactiveFormsModule, UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SupabaseService } from '../../../supabase.service';
-interface Data {
-  id: number,
-  char_id: number,
-  uuid: string,
-  hunt: boolean[],
-  study: boolean[],
-  survey: boolean[],
-  tinker: boolean[],
-  finesse: boolean[],
-  prowl: boolean[],
-  skirmish: boolean[],
-  wreck: boolean[],
-  attune: boolean[],
-  command: boolean[],
-  consort: boolean[],
-  sway: boolean[]
-}
+// interface Data {
+//   id: number,
+//   char_id: number,
+//   uuid: string,
+//   hunt: boolean[],
+//   study: boolean[],
+//   survey: boolean[],
+//   tinker: boolean[],
+//   finesse: boolean[],
+//   prowl: boolean[],
+//   skirmish: boolean[],
+//   wreck: boolean[],
+//   attune: boolean[],
+//   command: boolean[],
+//   consort: boolean[],
+//   sway: boolean[]
+// }
 @Component({
   selector: 'app-character-talents',
   imports: [ButtonComponent, ReactiveFormsModule, CommonModule],
